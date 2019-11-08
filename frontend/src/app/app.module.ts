@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { IndexComponent } from './components/index/index.component';
+import { FormComponent } from './components/form/form.component';
+import { SharedsModule } from './shareds/shareds.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IndexComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BsDropdownModule.forRoot()
+    SharedsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
