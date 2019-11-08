@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { AuthNavbarComponent } from './components/auth-navbar/auth-navbar.component';
 import { AuthSidebarComponent } from './components/auth-sidebar/auth-sidebar.component';
+import { AuthContentComponent } from './components/auth-content/auth-content.component';
 
 
 
 @NgModule({
   declarations: [
     AuthNavbarComponent,
-    AuthSidebarComponent],
+    AuthSidebarComponent,
+    AuthContentComponent],
   imports: [
     CommonModule,
     BsDropdownModule.forRoot()
@@ -17,7 +19,8 @@ import { AuthSidebarComponent } from './components/auth-sidebar/auth-sidebar.com
   exports:[
     BsDropdownModule,
     AuthNavbarComponent,
-    AuthSidebarComponent
+    AuthSidebarComponent,
+    AuthContentComponent
   ]
 })
 export class SharedsModule { }
