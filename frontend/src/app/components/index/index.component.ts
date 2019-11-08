@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IList, BudgetService } from '../budget.service';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  public ListItem: IList[] = [];
+
+  constructor(
+    private budgetService: BudgetService
+  ) { }
 
   ngOnInit() {
+    this.budgetService.getItems()
+    .subscribe(result => {
+      console.log(result)
+    })
   }
 
 }
