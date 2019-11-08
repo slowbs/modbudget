@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-declare const App:any;
 
 @Component({
   selector: 'app-index',
@@ -11,7 +10,6 @@ export class IndexComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    App.initialLoadPage();
   }
 
 }
