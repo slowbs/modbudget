@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './components/index/index.component';
 import { FormComponent } from './components/form/form.component';
 import { SharedsModule } from './shareds/shareds.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SharedsModule } from './shareds/shareds.module';
     BrowserModule,
     AppRoutingModule,
     SharedsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

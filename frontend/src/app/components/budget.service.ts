@@ -22,12 +22,13 @@ export class BudgetService {
 
 export interface IList {
   id?: string;
+  datepick: Date;
   bookno: string;
   text: string;
   income: string;
   outcome: string;
   refund: string;
-  balance: string;
+  balance?: string;
   note?: string;
   created?: string;
   updated?: string;
