@@ -1,5 +1,6 @@
 export const AppURL = {
     Index: 'index',
+    List: 'list',
     Form: 'form'
 }
 

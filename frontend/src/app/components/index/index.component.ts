@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IList, BudgetService } from '../budget.service';
+import { BudgetService, ITopic } from '../budget.service';
+import { AppURL } from '../../app.url';
 
 @Component({
   selector: 'app-index',
@@ -8,16 +9,17 @@ import { IList, BudgetService } from '../budget.service';
 })
 export class IndexComponent implements OnInit {
 
-  public ListItem: IList[] = [];
+  public TopicItem: ITopic[] = [];
+  AppURL = AppURL;
 
   constructor(
     private budgetService: BudgetService
   ) { }
 
   ngOnInit() {
-    this.budgetService.getItems()
+    this.budgetService.getTopics()
     .subscribe(result => {
-      this.ListItem = result
+      this.TopicItem = result
       // console.log(result)
     })
   }

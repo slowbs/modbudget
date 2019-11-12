@@ -7,19 +7,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BudgetService {
 
-  private backendURL: string = `${backendURL}/api/list`;
+  private backendTopic: string = `${backendURL}/api/topic`;
+  private backendList: string = `${backendURL}/api/list`;
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
-  /** ดึงข้อมูลรายการทั้งหมด */
-  getItems(){
-    return this.httpClient.get<IList[]>(this.backendURL);
+  /** ดึงข้อมูลรายการทั้งหมด Topic */
+  getTopics(){
+    return this.httpClient.get<ITopic[]>(this.backendTopic);
   }
 
-  postItem(value: IList){
-    return this.httpClient.post(this.backendURL, value);
+  postTopic(value: IList){
+    return this.httpClient.post(this.backendTopic, value);
+  }
+
+  /** ดึงข้อมูลรายการทั้งหมด List */
+  getLists(){
+    return this.httpClient.get<IList[]>(this.backendList);
+  }
+
+  postList(value: IList){
+    return this.httpClient.post(this.backendList, value);
   }
   
 }
@@ -39,4 +49,11 @@ export interface IList {
   updated?: string;
 
   // checked?: boolean; //สำหรับ checkbox เมื่อมีการ checkAll
+}
+
+export interface ITopic {
+  id?: string;
+  budgetno: string;
+  name: string;
+  balance: string;
 }

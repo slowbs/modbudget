@@ -8,12 +8,14 @@ import { IndexComponent } from './components/index/index.component';
 import { FormComponent } from './components/form/form.component';
 import { SharedsModule } from './shareds/shareds.module';
 import { FormsModule } from '@angular/forms';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
-    FormComponent
+    FormComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
 
   onSubmit(){
     // console.log(this.model);
-    this.budgetService.postItem(this.model)
+    this.budgetService.postList(this.model)
     .subscribe(result => {
       console.log(result)
       this.router.navigate(['/', AppURL.Index])
