@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetService, IList } from '../budget.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -9,13 +10,22 @@ import { BudgetService, IList } from '../budget.service';
 export class ListComponent implements OnInit {
 
   public ListItem: IList[] = [];
+  public Id: IList = Object.assign({});
 
   constructor(
-    private budgetService: BudgetService
-  ) { }
+    private budgetService: BudgetService,
+    private activateRoute: ActivatedRoute
+  ) { 
+        /** Param */
+        this.activateRoute.params.forEach(queryParam => {
+          // console.log(queryParam);
+          this.Id = queryParam.id
+          // console.log(this.Id)
+        })
+  }
 
   ngOnInit() {
-    this.budgetService.getLists()
+    this.budgetService.getLists(this.Id)
     .subscribe(result => {
       this.ListItem = result
     })

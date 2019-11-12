@@ -24,8 +24,12 @@ export class BudgetService {
   }
 
   /** ดึงข้อมูลรายการทั้งหมด List */
-  getLists(){
-    return this.httpClient.get<IList[]>(this.backendList);
+  // getLists(){
+  //   return this.httpClient.get<IList[]>(this.backendList);
+  // }
+
+  getLists(id: any){
+    return this.httpClient.get<IList[]>(this.backendList, { params: { id }});
   }
 
   postList(value: IList){
