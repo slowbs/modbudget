@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetService, IList } from '../budget.service';
 import { ActivatedRoute } from '@angular/router';
+import { AppURL } from '../../app.url';
 
 @Component({
   selector: 'app-list',
@@ -9,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
+  AppURL = AppURL;
   public ListItem: IList[] = [];
   public Id: IList = Object.assign({});
 
