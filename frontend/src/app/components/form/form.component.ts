@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IList } from '../budget.service';
+import { IList, BudgetService } from '../budget.service';
+import { Router } from '@angular/router';
+import { AppURL } from '../../app.url';
 declare const $:any;
 
 @Component({
@@ -9,19 +11,25 @@ declare const $:any;
 })
 export class FormComponent implements OnInit {
 
+  AppURL = AppURL;
+
   // public datepick = new Date();
     /** สร้าง model เอาไว้เก็บที่อยู่ใน input */
     public model:IList = {
       bookno: '',
       text: '',
       datepick: new Date(),
+      type: '',
       income: '0',
       outcome: '0',
       refund: '0',
       note: ''
     };
 
-  constructor() { }
+  constructor(
+    private budgetService: BudgetService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
    
@@ -30,7 +38,14 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.model);
+    // console.log(this.model);
+    this.budgetService.postItem(this.model)
+    .subscribe(result => {
+      console.log(result)
+      this.router.navigate(['/', AppURL.Index])
+    },
+    excep => alert(excep.error.message)
+    )
   }
 
   public datePicker(){

@@ -17,6 +17,10 @@ export class BudgetService {
   getItems(){
     return this.httpClient.get<IList[]>(this.backendURL);
   }
+
+  postItem(value: IList){
+    return this.httpClient.post(this.backendURL, value);
+  }
   
 }
 
@@ -24,10 +28,11 @@ export interface IList {
   id?: string;
   datepick: Date;
   bookno: string;
+  type: string;
   text: string;
-  income: string;
-  outcome: string;
-  refund: string;
+  income?: string;
+  outcome?: string;
+  refund?: string;
   balance?: string;
   note?: string;
   created?: string;

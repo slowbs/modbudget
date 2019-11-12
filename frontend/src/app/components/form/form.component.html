@@ -21,13 +21,13 @@
                                 <input class="form-control" id="bookno" [(ngModel)]="model.bookno" name="bookno" type="text">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="menulist">เลือกเมนู</label>
-                                <select class="form-control" id="menulist">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <label class="col-form-label" for="type">เลือกเมนู</label>
+                                <select class="form-control" id="type" [(ngModel)]="model.type" name="type">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -49,15 +49,15 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">รับ</label>
-                                <input class="form-control" id="inputDefault" [(ngModel)]="model.income" name="income" type="text">
+                                <input class="form-control" id="income" [(ngModel)]="model.income" name="income" type="number">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">จ่าย</label>
-                                <input class="form-control" id="inputDefault" [(ngModel)]="model.outcome" name="outcome" type="text">
+                                <input class="form-control" id="outcome" [(ngModel)]="model.outcome" name="outcome" type="number">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">คืนเงิน</label>
-                                <input class="form-control" id="inputDefault" [(ngModel)]="model.refund" name="refund" type="text">
+                                <input class="form-control" id="refund" [(ngModel)]="model.refund" name="refund" type="number">
                             </div>
                             <input type="submit" class="btn btn-success" value="ตกลง">
                         </div>

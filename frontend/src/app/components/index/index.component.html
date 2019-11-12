@@ -18,16 +18,17 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Username</th>
-                        <th>#</th>
+                        <th>Type</th>
+                        <th>Money</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Username</th>
                         <th>Last Name</th>
-                        <th>Username</th>
+                        <!-- <th>Username</th> -->
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <td>1</td>
                         <td>Mark</td>
                         <td>Otto</td>
@@ -38,6 +39,19 @@
                         <td>@mdo</td>
                         <td>Otto</td>
                         <td>@mdo</td>
+                    </tr> -->
+                    <tr *ngFor="let item of ListItem">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.bookno }}</td>
+                        <td>{{ item.datepick }}</td>
+                        <td>{{ item.text }}</td>
+                        <td>{{ item.type }}</td>
+                        <td>{{ item.income }}</td>
+                        <td>{{ item.outcome }}</td>
+                        <td>{{ item.refund }}</td>
+                        <td>{{ item.balance }}</td>
+                        <td>{{ item.note }}</td>
+                        <!-- <td>{{ item.created }}</td> -->
                     </tr>
                 </tbody>
             </table>
