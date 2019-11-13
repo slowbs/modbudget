@@ -5,6 +5,16 @@ $data = json_decode(file_get_contents('php://input'));
 /** Validation */
 if(isset($data->bookno) && isset($data->text))
 {
+
+    /** ดึงค่า balance จาก total */
+    $sql = "SELECT * from total where id = $data->type";
+    // $sql = "SELECT * FROM `c1` WHERE 1";
+    $query = mysqli_query($database, $sql);
+    // $result = mysqli_fetch_assoc($query, MYSQLI_ASSOC);
+    $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+    // echo json_encode($result);
+    $balance = $result[balance];
+
     #check null
     if(empty($data->bookno)){
         http_response_code(400);
@@ -22,7 +32,7 @@ if(isset($data->bookno) && isset($data->text))
     // echo json_encode([
     //     'message' => 'valid'
     // ]);
-    $balance = ($data->income - $data->outcome);
+    $balance = $balance + ($data->income - $data->outcome + $data->refund);
     $query = "INSERT into list (bookno, datepick, type, text, income, outcome, refund, balance, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($database, $query);
     mysqli_stmt_bind_param($stmt, 'sssssssss',
@@ -66,3 +76,4 @@ else{
             //     //'post_data' => $request->message
             //     'post_data' => $data
             //     ]);
+

@@ -19,18 +19,18 @@
                             <div class="form-group">
                                 <label class="col-form-label" for="bookno">เลขที่หนังสือ</label>
                                 <input class="form-control" id="bookno" [(ngModel)]="model.bookno" name="bookno"
-                                    type="text">
+                                    type="text" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleSelect1">Example select</label>
+                                <label for="exampleSelect1">เลือกประเภทงบ</label>
                                 <select class="form-control" id="exampleSelect1" [(ngModel)]="model.type" name="type" required>
                                     <option *ngFor="let item of ListTopic" [ngValue]="item.id">{{ item.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="text">รายการ</label>
+                                <label class="col-form-label" for="text">ชื่อรายการ</label>
                                 <textarea class="form-control" id="text" [(ngModel)]="model.text" name="text"
-                                    rows="2"></textarea>
+                                    rows="2" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="note">หมายเหตุ</label>
@@ -43,24 +43,24 @@
                                 <label class="col-form-label" for="date">วันที่</label>
                                 <div class="input-group date">
                                     <input type="text" class="form-control" [(ngModel)]="model.datepick" name="datepick"
-                                        id="datepick"><span class="input-group-addon"><i
+                                        id="datepick" required><span class="input-group-addon"><i
                                             class="glyphicon glyphicon-th"></i></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">รับ</label>
                                 <input class="form-control" id="income" [(ngModel)]="model.income" name="income"
-                                    type="number">
+                                    type="number" required>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">จ่าย</label>
                                 <input class="form-control" id="outcome" [(ngModel)]="model.outcome" name="outcome"
-                                    type="number">
+                                    type="number" required>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">คืนเงิน</label>
                                 <input class="form-control" id="refund" [(ngModel)]="model.refund" name="refund"
-                                    type="number">
+                                    type="number" required>
                             </div>
                             <input type="submit" class="btn btn-success" value="ตกลง">
                         </div>
