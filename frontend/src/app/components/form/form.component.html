@@ -13,51 +13,54 @@
     <div class="row" id="sandbox-container">
         <div class="col-md-12">
             <div class="tile">
-                <form (submit)="onSubmit()">
+                <form (submit)="onSubmit()" [noValidate]="false">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="col-form-label" for="bookno">เลขที่หนังสือ</label>
-                                <input class="form-control" id="bookno" [(ngModel)]="model.bookno" name="bookno" type="text">
+                                <input class="form-control" id="bookno" [(ngModel)]="model.bookno" name="bookno"
+                                    type="text">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="type">เลือกเมนู</label>
-                                <select class="form-control" id="type" [(ngModel)]="model.type" name="type">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
+                                <label for="exampleSelect1">Example select</label>
+                                <select class="form-control" id="exampleSelect1" [(ngModel)]="model.type" name="type" required>
+                                    <option *ngFor="let item of ListTopic" [ngValue]="item.id">{{ item.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="text">รายการ</label>
-                                <textarea class="form-control" id="text" [(ngModel)]="model.text" name="text" rows="2"></textarea>
+                                <textarea class="form-control" id="text" [(ngModel)]="model.text" name="text"
+                                    rows="2"></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="note">หมายเหตุ</label>
-                                <textarea class="form-control" id="note" [(ngModel)]="model.note" name="note" rows="2"></textarea>
+                                <textarea class="form-control" id="note" [(ngModel)]="model.note" name="note"
+                                    rows="2"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="col-form-label" for="date">วันที่</label>
                                 <div class="input-group date">
-                                    <input type="text" class="form-control" [(ngModel)]="model.datepick" name="datepick" id="datepick"><span class="input-group-addon"><i
+                                    <input type="text" class="form-control" [(ngModel)]="model.datepick" name="datepick"
+                                        id="datepick"><span class="input-group-addon"><i
                                             class="glyphicon glyphicon-th"></i></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">รับ</label>
-                                <input class="form-control" id="income" [(ngModel)]="model.income" name="income" type="number">
+                                <input class="form-control" id="income" [(ngModel)]="model.income" name="income"
+                                    type="number">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">จ่าย</label>
-                                <input class="form-control" id="outcome" [(ngModel)]="model.outcome" name="outcome" type="number">
+                                <input class="form-control" id="outcome" [(ngModel)]="model.outcome" name="outcome"
+                                    type="number">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="inputDefault">คืนเงิน</label>
-                                <input class="form-control" id="refund" [(ngModel)]="model.refund" name="refund" type="number">
+                                <input class="form-control" id="refund" [(ngModel)]="model.refund" name="refund"
+                                    type="number">
                             </div>
                             <input type="submit" class="btn btn-success" value="ตกลง">
                         </div>
