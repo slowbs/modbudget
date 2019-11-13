@@ -19,7 +19,7 @@ export class BudgetService {
     return this.httpClient.get<ITopic[]>(this.backendTopic);
   }
 
-  postTopic(value: IList){
+  postTopic(value: ITopic){
     return this.httpClient.post(this.backendTopic, value);
   }
 

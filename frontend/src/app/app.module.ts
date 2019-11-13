@@ -9,13 +9,15 @@ import { FormComponent } from './components/form/form.component';
 import { SharedsModule } from './shareds/shareds.module';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './components/list/list.component';
+import { FormtotalComponent } from './components/formtotal/formtotal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     FormComponent,
-    ListComponent
+    ListComponent,
+    FormtotalComponent
   ],
   imports: [
     BrowserModule,

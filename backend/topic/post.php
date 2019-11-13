@@ -3,19 +3,25 @@
 $data = json_decode(file_get_contents('php://input'));
 
 /** Validation */
-if(isset($data->bookno) && isset($data->text))
+if(isset($data->budgetno) && isset($data->name) && isset($data->balance))
 {
     #check null
-    if(empty($data->bookno)){
+    if(empty($data->budgetno)){
         http_response_code(400);
         exit(json_encode([
-            'message' => 'กรอก bookno'
+            'message' => 'กรอก หมายเลขงบ'
         ]));
     }
-    elseif(empty($data->text)){
+    elseif(empty($data->name)){
         http_response_code(400);
         exit(json_encode([
-            'message' => 'กรอก text'
+            'message' => 'กรอก ชื่อ'
+        ]));
+    }
+    elseif(empty($data->balance)){
+        http_response_code(400);
+        exit(json_encode([
+            'message' => 'กรอก งบประมาณ'
         ]));
     }
 
@@ -23,18 +29,12 @@ if(isset($data->bookno) && isset($data->text))
     //     'message' => 'valid'
     // ]);
     $balance = ($data->income - $data->outcome);
-    $query = "INSERT into list (bookno, datepick, type, text, income, outcome, refund, balance, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT into total (budgetno, name, balance) VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($database, $query);
-    mysqli_stmt_bind_param($stmt, 'sssssssss',
-        $data->bookno,
-        $data->datepick,
-        $data->type,
-        $data->text,
-        $data->income,
-        $data->outcome,
-        $data->refund,
-        $balance,
-        $data->note
+    mysqli_stmt_bind_param($stmt, 'sss',
+        $data->budgetno,
+        $data->name,
+        $data->balance
     );
     mysqli_stmt_execute($stmt);
     $error_message = mysqli_error($database);
