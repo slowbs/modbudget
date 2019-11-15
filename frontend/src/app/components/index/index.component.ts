@@ -19,8 +19,9 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.budgetService.getTopics()
     .subscribe(result => {
-      this.TopicItem = result
+      // this.TopicItem = result['result']
       // console.log(result)
+      this.TopicItem = result
     })
   }
 
