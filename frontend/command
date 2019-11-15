@@ -1,1 +1,10 @@
 ng build --prod --base-href=/modbudget/
+
+
+
+test balanace
+select balance into @csum from total where 1;
+  UPDATE list
+  set balance = (@csum := @csum + income - outcome + refund)
+  where 1
+  order by type;
