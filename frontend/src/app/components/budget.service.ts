@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { backendURL } from '../app.url';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BudgetService {
 
-  private backendTopic: string = `${backendURL}/api/topic`;
-  private backendList: string = `${backendURL}/api/list`;
+  private backendAPI: string = environment.production ?
+  'http://61.19.202.217/modbudget/backend/api' :
+  `${backendURL}/api/`;
+
+  // private backendTopic: string = 'http://61.19.202.217/modbudget/backend/api/topic';
+  private backendTopic: string = this.backendAPI + '/topic';
+  // private backendList: string = `${backendURL}/api/list`;
+  private backendList: string = this.backendAPI + '/list';
 
   constructor(
     private httpClient: HttpClient
