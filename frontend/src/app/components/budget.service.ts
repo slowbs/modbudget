@@ -8,6 +8,8 @@ import { environment } from '../../environments/environment';
 })
 export class BudgetService {
 
+  public updateModel: IList = Object.assign({});
+
   private backendAPI: string = environment.production ?
   'http://61.19.202.217/modbudget/backend/api' :
   `${backendURL}/api/`;
@@ -21,6 +23,7 @@ export class BudgetService {
     private httpClient: HttpClient
   ) { }
 
+  /** Topic */
   /** ดึงข้อมูลรายการทั้งหมด Topic */
   getTopics(){
     return this.httpClient.get<ITopic[]>(this.backendTopic);
@@ -35,12 +38,18 @@ export class BudgetService {
   //   return this.httpClient.get<IList[]>(this.backendList);
   // }
 
+
+  /** List */
   getLists(id: any){
     return this.httpClient.get<IList[]>(this.backendList, { params: { id }});
   }
 
   postList(value: IList){
     return this.httpClient.post(this.backendList, value);
+  }
+
+  putList(id: any, value: IList){
+    return this.httpClient.put(this.backendList, value, { params : { id } });
   }
   
 }

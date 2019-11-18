@@ -30,6 +30,7 @@
                         <th>คืนเงิน</th>
                         <th>คงเหลือ</th>
                         <th>หมายเหตุ</th>
+                        <th>Actions</th>
                         <!-- <th>Username</th> -->
                     </tr>
                 </thead>
@@ -52,15 +53,35 @@
                         <td>{{ item.datepick }}</td>
                         <td>{{ item.text }}</td>
                         <td>{{ item.type }}</td>
-                        <td><font color="green"><b>{{ item.income }}</b></font></td>
-                        <td><font color="red"><b>{{ item.outcome }}</b></font></td>
-                        <td><font color="blue"><b>{{ item.refund }}</b></font></td>
+                        <td>
+                            <font color="green"><b>{{ item.income }}</b></font>
+                        </td>
+                        <td>
+                            <font color="red"><b>{{ item.outcome }}</b></font>
+                        </td>
+                        <td>
+                            <font color="blue"><b>{{ item.refund }}</b></font>
+                        </td>
                         <td><b>{{ item.balance }}</b></td>
                         <td>{{ item.note }}</td>
+                        <td>
+                            <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->
+                            <a href="#editListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">
+                                <i class="fa fa-pencil-square-o fa-lg" style="margin:5px" data-toggle="tooltip"
+                                    title="แก้ไข" aria-hidden="true"></i></a>
+                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"
+                                (click)="onDeleteModal(item)">
+                                <i class="fa fa-window-close fa-lg" style="margin:5px; color:#F44336"
+                                    data-toggle="tooltip" title="ลบ" aria-hidden="true"></i></a>
+                        </td>
                         <!-- <td>{{ item.created }}</td> -->
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+
+    <!-- include html content -->
+    <!-- <app-formmodal [getComp]="getComp"></app-formmodal> -->
+    <app-formmodal></app-formmodal>
 </app-auth-content>

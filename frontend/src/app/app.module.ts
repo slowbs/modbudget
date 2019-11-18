@@ -10,6 +10,7 @@ import { SharedsModule } from './shareds/shareds.module';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './components/list/list.component';
 import { FormtotalComponent } from './components/formtotal/formtotal.component';
+import { FormmodalComponent } from './components/formmodal/formmodal.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormtotalComponent } from './components/formtotal/formtotal.component';
     IndexComponent,
     FormComponent,
     ListComponent,
-    FormtotalComponent
+    FormtotalComponent,
+    FormmodalComponent
   ],
   imports: [
     BrowserModule,
