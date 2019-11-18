@@ -17,6 +17,7 @@
                         <th>ID</th>
                         <th>หมายเลขงบ</th>
                         <th>ชื่องบ</th>
+                        <th>งบประมาณ</th>
                         <th>คงเหลือ</th>
                         <!-- <th>Username</th> -->
                     </tr>
@@ -38,6 +39,7 @@
                         <td>{{ item.id }}</td>
                         <td>{{ item.budgetno }}</td>
                         <td><a [routerLink]="['/', AppURL.List, item.id ] ">{{ item.name }}</a></td>
+                        <td>{{ item.total }}</td>
                         <td>{{ item.balance }}</td>
                         <!-- <td>{{ item.created }}</td> -->
                     </tr>

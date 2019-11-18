@@ -29,11 +29,12 @@ if(isset($data->budgetno) && isset($data->name) && isset($data->balance))
     //     'message' => 'valid'
     // ]);
     $balance = ($data->income - $data->outcome);
-    $query = "INSERT into total (budgetno, name, balance) VALUES (?, ?, ?)";
+    $query = "INSERT into total (budgetno, name, total, balance) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($database, $query);
-    mysqli_stmt_bind_param($stmt, 'sss',
+    mysqli_stmt_bind_param($stmt, 'ssss',
         $data->budgetno,
         $data->name,
+        $data->balance,
         $data->balance
     );
     mysqli_stmt_execute($stmt);
