@@ -69,8 +69,7 @@
                             <a href="#editListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">
                                 <i class="fa fa-pencil-square-o fa-lg" style="margin:5px" data-toggle="tooltip"
                                     title="แก้ไข" aria-hidden="true"></i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"
-                                (click)="onDeleteModal(item)">
+                            <a href="#deleteListModal" class="delete" data-toggle="modal" (click)="onDeleteModal(item)">
                                 <i class="fa fa-window-close fa-lg" style="margin:5px; color:#F44336"
                                     data-toggle="tooltip" title="ลบ" aria-hidden="true"></i></a>
                         </td>
@@ -78,6 +77,28 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Delete Modal HTML -->
+    <div id="deleteListModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form (submit)="onDelSubmit()">
+                    <div class="modal-header">
+                        <h4 class="modal-title">ลบรายการ</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>ยืนยันที่จะลบรายการนี้ ?</p>
+                        <p class="text-warning"><small>การลบรายการต่อไปนี้จะไม่สามารถแก้ไขคืนกลับได้</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BudgetService, IList, ITopic } from '../budget.service';
 import { ListComponent } from '../list/list.component';
+import { Router } from '@angular/router';
+import { AppURL } from 'src/app/app.url';
 declare const $:any;
 
 @Component({
@@ -17,7 +19,8 @@ export class FormmodalComponent implements OnInit {
   public ListTopic: ITopic[] = [];
 
   constructor(
-    private budgetService: BudgetService
+    private budgetService: BudgetService,
+    private router: Router
   ) {
     this.model = this.budgetService.updateModel
   }
@@ -32,6 +35,8 @@ export class FormmodalComponent implements OnInit {
     .subscribe( result => {
       // console.log(result)
       $('#editListModal').modal('hide');
+      // this.router.navigate(['/', AppURL.List, 1])
+      this.router.navigate(['/', AppURL.Index])
     },
     excep => alert(excep.error.message)
     )

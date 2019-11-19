@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 export class BudgetService {
 
   public updateModel: IList = Object.assign({});
+  public deleteModel: IList = Object.assign({});
 
   private backendAPI: string = environment.production ?
   'http://61.19.202.217/modbudget/backend/api' :
@@ -50,6 +51,10 @@ export class BudgetService {
 
   putList(id: any, value: IList){
     return this.httpClient.put(this.backendList, value, { params : { id } });
+  }
+
+  deleteItem(id: any){
+    return this.httpClient.delete(this.backendList, { params: { id } });
   }
   
 }

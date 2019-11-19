@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BudgetService, IList } from '../budget.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppURL } from '../../app.url';
+declare const $:any;
 
 @Component({
   selector: 'app-list',
@@ -37,5 +38,21 @@ export class ListComponent implements OnInit {
     // console.log(item);
     Object.assign(this.budgetService.updateModel, item);
   }
+
+  public onDeleteModal(item: IList){
+    // console.log(item);
+    Object.assign(this.budgetService.deleteModel, item);
+  }
+
+  public onDelSubmit(){
+    this.budgetService
+    .deleteItem(this.budgetService.deleteModel.id)
+    .subscribe(result => {
+      this.ngOnInit();
+      $('#deleteListModal').modal('hide');
+    },
+    excep => alert(excep.error.message))
+  }
+
 
 }
