@@ -3,6 +3,7 @@
 $data = json_decode(file_get_contents('php://input'));
 
 if (isset($_GET['id'])) {
+    $id = $_GET['id'];
     /** Validation */
     if (empty($data->bookno)) {
         http_response_code(400);
@@ -36,6 +37,9 @@ if (isset($_GET['id'])) {
         $_GET['id']
     );
     mysqli_stmt_execute($stmt);
+    mysqli_query($database, "select total into @csum from total where id = $data->type;");
+    mysqli_query($database, "UPDATE list set balance = (@csum := @csum + income - outcome + refund) where type = $data->type");
+    mysqli_query($database, "UPDATE total set balance = @csum where id = $data->type");
     $error_message = mysqli_error($database);
 
     /** เช็ค error */

@@ -19,6 +19,7 @@ export class BudgetService {
   private backendTopic: string = this.backendAPI + '/topic';
   // private backendList: string = `${backendURL}/api/list`;
   private backendList: string = this.backendAPI + '/list';
+  private backendActivity: string = this.backendAPI + '/activity';
 
   constructor(
     private httpClient: HttpClient
@@ -57,6 +58,11 @@ export class BudgetService {
     return this.httpClient.delete(this.backendList, { params: { id } });
   }
   
+
+  /** Activity */
+  getActivity(activityno: any){
+    return this.httpClient.get<IActivity[]>(this.backendActivity, { params: { activityno }});
+  }
 }
 
 export interface IList {
@@ -80,5 +86,13 @@ export interface ITopic {
   id?: string;
   budgetno: string;
   name: string;
-  balance: string;
+  balance?: string;
+}
+
+export interface IActivity {
+  id?: string;
+  activityno: string;
+  budgetno: string;
+  name: string;
+  balance?: string;
 }

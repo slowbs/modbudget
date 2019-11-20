@@ -23,5 +23,354 @@ select balance into @csum from total where 1;
     . "  where 1";
 
 
-mysqli_query($database,"select balance into @csum from total where id = 1;");
-mysqli_query($database,"UPDATE list set balance = (@csum := @csum + income - outcome + refund) where 1");
+mysqli_query($database,"select total into @csum from total where id = 1;");
+mysqli_query($database,"UPDATE list set balance = (@csum := @csum + income - outcome + refund) where id = 1");
+mysqli_query($database,"UPDATE total set balance = @csum where id = 1");
+
+  select total into @csum from total where id = 1;
+  UPDATE list
+  set balance = (@csum := @csum + income - outcome + refund)
+  where 1;
+  update total
+  set balance = @csum
+  where id = 1
+
+
+  (select text, budgetno, activityno, sum(income) from list where activityno = '4444')
+JOIN 
+(select SUM(outcome) from list where activityno = '4444') on list.activityno = list.activityno
+
+
+select * from(  
+  (select text, budgetno, activityno, sum(income) from list where activityno = '4444') as a
+JOIN
+(select budgetno, SUM(outcome) from list where activityno = '4444') as b on activityno = activityno)
+
+select * from(
+(select text, budgetno, activityno, sum(income) from list where activityno = '4444') as a
+JOIN
+(select SUM(outcome) as m_11 from list where activityno = '4444' and MONTH(datepick) = '11') as b on activityno = activityno
+JOIN
+(select SUM(outcome) as m_12 from list where activityno = '4444' and MONTH(datepick) = '12') as c on activityno = activityno
+)
+
+select * from(
+(select text, budgetno, activityno, sum(income) from list GROUP by activityno) as a
+JOIN
+(select SUM(outcome) as m_11 from list where MONTH(datepick) = '11') as b on activityno = activityno
+JOIN
+(select SUM(outcome) as m_12 from list where MONTH(datepick) = '12') as c on activityno = activityno
+)
+
+
+select * from(
+(select text, budgetno, activityno, sum(income) from list GROUP by activityno) as a
+JOIN
+(select SUM(outcome) as m_11 from list where MONTH(datepick) = '11') as b on activityno = activityno
+JOIN
+(select SUM(outcome) as m_12 from list where MONTH(datepick) = '12') as c on activityno = activityno
+JOIN
+(select SUM(outcome) as m_1 from list where MONTH(datepick) = '1') as d on activityno = activityno
+JOIN
+(select SUM(outcome) as m_2 from list where MONTH(datepick) = '2') as e on activityno = activityno
+JOIN
+(select SUM(outcome) as m_3 from list where MONTH(datepick) = '3') as f on activityno = activityno
+JOIN
+(select SUM(outcome) as m_4 from list where MONTH(datepick) = '4') as g on activityno = activityno
+JOIN
+(select SUM(outcome) as m_5 from list where MONTH(datepick) = '5') as h on activityno = activityno
+JOIN
+(select SUM(outcome) as m_6 from list where MONTH(datepick) = '6') as i on activityno = activityno
+JOIN
+(select SUM(outcome) as m_7 from list where MONTH(datepick) = '7') as j on activityno = activityno
+JOIN
+(select SUM(outcome) as m_8 from list where MONTH(datepick) = '8') as k on activityno = activityno
+JOIN
+(select SUM(outcome) as m_9 from list where MONTH(datepick) = '9') as l on activityno = activityno
+JOIN
+(select SUM(outcome) as m_10 from list where MONTH(datepick) = '10') as m on activityno = activityno
+)
+
+
+//group by activityno
+select text, budgetno, a.activityno, income, m_11, m_12 from
+(select text, budgetno, activityno, sum(income) as income from list GROUP by activityno) as a
+left JOIN
+(select activityno, SUM(outcome) as m_11 from list where MONTH(datepick) = '11' GROUP by activityno) as m11
+on m11.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_12 from list where MONTH(datepick) = '12' GROUP by activityno) as m12
+on m12.activityno = a.activityno
+
+
+//group by work
+select text, budgetno, a.activityno, income, m_11, m_12, m_1, m_2, m_3, m_4, m_5, m_6, m_7, m_8, m_9, m_10 from
+(select text, budgetno, activityno, sum(income) as income from list GROUP by activityno) as a
+left JOIN
+(select activityno, SUM(outcome) as m_11 from list where MONTH(datepick) = '11' GROUP by activityno) as m11
+on m11.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_12 from list where MONTH(datepick) = '12' GROUP by activityno) as m12
+on m12.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_1 from list where MONTH(datepick) = '1' GROUP by activityno) as m1
+on m1.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_2 from list where MONTH(datepick) = '2' GROUP by activityno) as m2
+on m2.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_3 from list where MONTH(datepick) = '3' GROUP by activityno) as m3
+on m3.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_4 from list where MONTH(datepick) = '4' GROUP by activityno) as m4
+on m4.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_5 from list where MONTH(datepick) = '5' GROUP by activityno) as m5
+on m5.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_6 from list where MONTH(datepick) = '6' GROUP by activityno) as m6
+on m6.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_7 from list where MONTH(datepick) = '7' GROUP by activityno) as m7
+on m7.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_8 from list where MONTH(datepick) = '8' GROUP by activityno) as m8
+on m8.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_9 from list where MONTH(datepick) = '9' GROUP by activityno) as m9
+on m9.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_10 from list where MONTH(datepick) = '10' GROUP by activityno) as m10
+on m10.activityno = a.activityno
+
+
+select text, budgetno, a.activityno, income, m_11, m_12, m_1, m_2, m_3, m_4, m_5, m_6, m_7, m_8, m_9, m_10, ac.name from
+(select text, budgetno, activityno, sum(income) as income from list GROUP by activityno) as a
+left JOIN
+(select activityno, SUM(outcome) as m_11 from list where MONTH(datepick) = '11' GROUP by activityno) as m11
+on m11.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_12 from list where MONTH(datepick) = '12' GROUP by activityno) as m12
+on m12.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_1 from list where MONTH(datepick) = '1' GROUP by activityno) as m1
+on m1.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_2 from list where MONTH(datepick) = '2' GROUP by activityno) as m2
+on m2.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_3 from list where MONTH(datepick) = '3' GROUP by activityno) as m3
+on m3.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_4 from list where MONTH(datepick) = '4' GROUP by activityno) as m4
+on m4.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_5 from list where MONTH(datepick) = '5' GROUP by activityno) as m5
+on m5.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_6 from list where MONTH(datepick) = '6' GROUP by activityno) as m6
+on m6.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_7 from list where MONTH(datepick) = '7' GROUP by activityno) as m7
+on m7.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_8 from list where MONTH(datepick) = '8' GROUP by activityno) as m8
+on m8.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_9 from list where MONTH(datepick) = '9' GROUP by activityno) as m9
+on m9.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_10 from list where MONTH(datepick) = '10' GROUP by activityno) as m10
+on m10.activityno = a.activityno
+left JOIN
+acitivity ac on ac.activityno = a.activityno
+
+
+//เพิ่ม sum_1, sum_2 และ activityname
+select text, budgetno, a.activityno, income, ac.name, m_11, m_12, m_1, m_2, m_3, sum_1, m_4, m_5, m_6, m_7, m_8, m_9, m_10, sum_2 from
+(select text, budgetno, activityno, sum(income) as income from list GROUP by activityno) as a
+left JOIN
+(select activityno, SUM(outcome) as m_11 from list where MONTH(datepick) = '11' GROUP by activityno) as m11
+on m11.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_12 from list where MONTH(datepick) = '12' GROUP by activityno) as m12
+on m12.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_1 from list where MONTH(datepick) = '1' GROUP by activityno) as m1
+on m1.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_2 from list where MONTH(datepick) = '2' GROUP by activityno) as m2
+on m2.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_3 from list where MONTH(datepick) = '3' GROUP by activityno) as m3
+on m3.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_4 from list where MONTH(datepick) = '4' GROUP by activityno) as m4
+on m4.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_5 from list where MONTH(datepick) = '5' GROUP by activityno) as m5
+on m5.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_6 from list where MONTH(datepick) = '6' GROUP by activityno) as m6
+on m6.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_7 from list where MONTH(datepick) = '7' GROUP by activityno) as m7
+on m7.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_8 from list where MONTH(datepick) = '8' GROUP by activityno) as m8
+on m8.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_9 from list where MONTH(datepick) = '9' GROUP by activityno) as m9
+on m9.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_10 from list where MONTH(datepick) = '10' GROUP by activityno) as m10
+on m10.activityno = a.activityno
+left JOIN
+acitivity ac on ac.activityno = a.activityno
+left join
+(select activityno, SUM(outcome) as sum_1 from list where MONTH(datepick) IN ('10', '11', '12', '1', '2', '3')
+ GROUP by activityno ) as sum1
+on sum1.activityno = a.activityno
+left join
+(select activityno, SUM(outcome) as sum_2 from list where MONTH(datepick) IN ('4', '5', '6', '7', '8', '9')
+ GROUP by activityno ) as sum2
+on sum2.activityno = a.activityno
+GROUP by a.activityno
+
+//เพิ่ม sum income, sum outcome, balance, percentage
+select text, budgetno, a.activityno, ac.name, income, sum_income1, m_11, m_12, m_1, m_2, m_3, sum_outcome1, sum(sum_income1 - sum_outcome1) as balance1, round(sum((sum_outcome1 * 100)/sum_income1), 2) as per1,
+sum_income2, m_4, m_5, m_6, m_7, m_8, m_9, m_10, sum_outcome2 from
+(select text, budgetno, activityno, sum(income) as income from list GROUP by activityno) as a
+left JOIN
+(select activityno, SUM(outcome) as m_11 from list where MONTH(datepick) = '11' GROUP by activityno) as m11
+on m11.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_12 from list where MONTH(datepick) = '12' GROUP by activityno) as m12
+on m12.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_1 from list where MONTH(datepick) = '1' GROUP by activityno) as m1
+on m1.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_2 from list where MONTH(datepick) = '2' GROUP by activityno) as m2
+on m2.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_3 from list where MONTH(datepick) = '3' GROUP by activityno) as m3
+on m3.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_4 from list where MONTH(datepick) = '4' GROUP by activityno) as m4
+on m4.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_5 from list where MONTH(datepick) = '5' GROUP by activityno) as m5
+on m5.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_6 from list where MONTH(datepick) = '6' GROUP by activityno) as m6
+on m6.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_7 from list where MONTH(datepick) = '7' GROUP by activityno) as m7
+on m7.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_8 from list where MONTH(datepick) = '8' GROUP by activityno) as m8
+on m8.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_9 from list where MONTH(datepick) = '9' GROUP by activityno) as m9
+on m9.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_10 from list where MONTH(datepick) = '10' GROUP by activityno) as m10
+on m10.activityno = a.activityno
+left JOIN
+acitivity ac on ac.activityno = a.activityno
+left join
+(select activityno, SUM(income) as sum_income1 from list where MONTH(datepick) IN ('10', '11', '12', '1', '2', '3')
+ GROUP by activityno ) as sumincome1
+on sumincome1.activityno = a.activityno
+left join
+(select activityno, SUM(income) as sum_income2 from list where MONTH(datepick) IN ('4', '5', '6', '7', '8', '9')
+ GROUP by activityno ) as sumincome2
+on sumincome2.activityno = a.activityno
+left join
+(select activityno, SUM(outcome) as sum_outcome1 from list where MONTH(datepick) IN ('10', '11', '12', '1', '2', '3')
+ GROUP by activityno ) as sumoutcome1
+on sumoutcome1.activityno = a.activityno
+left join
+(select activityno, SUM(outcome) as sum_outcome2 from list where MONTH(datepick) IN ('4', '5', '6', '7', '8', '9')
+ GROUP by activityno ) as sumoutcome2
+on sumoutcome2.activityno = a.activityno
+GROUP by a.activityno
+
+//report fin
+select text, budgetno, a.activityno, ac.name, income, sum_income1, m_10, m_11, m_12, m_1, m_2, m_3, sum_outcome1, sum(sum_income1 - sum_outcome1) as balance1, round(sum((sum_outcome1 * 100)/sum_income1), 2) as per1,
+sum_income2, m_4, m_5, m_6, m_7, m_8, m_9, outcome, round((sum(outcome * 100)/income), 2) as per2,
+sum(income - outcome) as totalbalance
+from
+(select text, budgetno, activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by activityno) as a
+left JOIN
+(select activityno, SUM(outcome) as m_11 from list where MONTH(datepick) = '11' GROUP by activityno) as m11
+on m11.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_12 from list where MONTH(datepick) = '12' GROUP by activityno) as m12
+on m12.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_1 from list where MONTH(datepick) = '1' GROUP by activityno) as m1
+on m1.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_2 from list where MONTH(datepick) = '2' GROUP by activityno) as m2
+on m2.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_3 from list where MONTH(datepick) = '3' GROUP by activityno) as m3
+on m3.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_4 from list where MONTH(datepick) = '4' GROUP by activityno) as m4
+on m4.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_5 from list where MONTH(datepick) = '5' GROUP by activityno) as m5
+on m5.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_6 from list where MONTH(datepick) = '6' GROUP by activityno) as m6
+on m6.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_7 from list where MONTH(datepick) = '7' GROUP by activityno) as m7
+on m7.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_8 from list where MONTH(datepick) = '8' GROUP by activityno) as m8
+on m8.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_9 from list where MONTH(datepick) = '9' GROUP by activityno) as m9
+on m9.activityno = a.activityno
+left JOIN
+(select activityno, SUM(outcome) as m_10 from list where MONTH(datepick) = '10' GROUP by activityno) as m10
+on m10.activityno = a.activityno
+left JOIN
+acitivity ac on ac.activityno = a.activityno
+left join
+(select activityno, SUM(income) as sum_income1 from list where MONTH(datepick) IN ('10', '11', '12', '1', '2', '3')
+ GROUP by activityno ) as sumincome1
+on sumincome1.activityno = a.activityno
+left join
+(select activityno, SUM(income) as sum_income2 from list where MONTH(datepick) IN ('4', '5', '6', '7', '8', '9')
+ GROUP by activityno ) as sumincome2
+on sumincome2.activityno = a.activityno
+left join
+(select activityno, SUM(outcome) as sum_outcome1 from list where MONTH(datepick) IN ('10', '11', '12', '1', '2', '3')
+ GROUP by activityno ) as sumoutcome1
+on sumoutcome1.activityno = a.activityno
+left join
+(select activityno, SUM(outcome) as sum_outcome2 from list where MONTH(datepick) IN ('4', '5', '6', '7', '8', '9')
+ GROUP by activityno ) as sumoutcome2
+on sumoutcome2.activityno = a.activityno
+GROUP by a.activityno
+
+
+//Activity
+select id, a.activityno, name, income, outcome, sum(income - outcome) as balance from (
+(select *  from activity) as a
+left join
+(select activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by activityno) as l on l.activityno = a.activityno)
+where budgetno = ?
+group by activityno
+
+//Budget
+select id, b.budgetno, name, income, outcome, sum(income - outcome) as balance from (
+(select *  from budget) as b
+left join
+(select budgetno, sum(income) as income, sum(outcome) as outcome from list GROUP by budgetno) as l on l.budgetno = b.budgetno)
+group by budgetno

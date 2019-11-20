@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { ListComponent } from './components/list/list.component';
 import { FormtotalComponent } from './components/formtotal/formtotal.component';
 import { FormmodalComponent } from './components/formmodal/formmodal.component';
+import { FormactivityComponent } from './components/formactivity/formactivity.component';
+import { ActivityComponent } from './components/activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormmodalComponent } from './components/formmodal/formmodal.component';
     FormComponent,
     ListComponent,
     FormtotalComponent,
-    FormmodalComponent
+    FormmodalComponent,
+    FormactivityComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,

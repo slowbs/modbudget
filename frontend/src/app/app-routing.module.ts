@@ -5,6 +5,8 @@ import { IndexComponent } from './components/index/index.component';
 import { FormComponent } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
 import { FormtotalComponent } from './components/formtotal/formtotal.component';
+import { FormactivityComponent } from './components/formactivity/formactivity.component';
+import { ActivityComponent } from './components/activity/activity.component';
 
 
 const routes: Routes = [
@@ -14,7 +16,10 @@ const routes: Routes = [
   { path: AppURL.FormTotal, component: FormtotalComponent },
   { path: AppURL.List, component: ListComponent },
   // {path: ContentURL.Content + '/:id', component: ContentComponent }
-  { path: AppURL.List + '/:id', component: ListComponent }
+  { path: AppURL.List + '/:budgetno' + '/:activityno', component: ListComponent },
+  { path: AppURL.FormActivity, component: FormactivityComponent },
+  { path: AppURL.Activity, component: ActivityComponent},
+  { path: AppURL.Activity + '/:activityno', component: ActivityComponent}
 ];
 
 @NgModule({

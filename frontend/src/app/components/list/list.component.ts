@@ -45,13 +45,14 @@ export class ListComponent implements OnInit {
   }
 
   public onDelSubmit(){
-    this.budgetService
-    .deleteItem(this.budgetService.deleteModel.id)
-    .subscribe(result => {
-      this.ngOnInit();
-      $('#deleteListModal').modal('hide');
-    },
-    excep => alert(excep.error.message))
+    console.log(this.budgetService.deleteModel)
+    // this.budgetService
+    // .deleteItem(this.budgetService.deleteModel.id)
+    // .subscribe(result => {
+    //   this.ngOnInit();
+    //   $('#deleteListModal').modal('hide');
+    // },
+    // excep => alert(excep.error.message))
   }
 
 
