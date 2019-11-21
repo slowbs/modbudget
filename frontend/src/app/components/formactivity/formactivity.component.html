@@ -17,8 +17,8 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="col-form-label" for="budgetno">รหัสกิจกรรม</label>
-                                <input class="form-control" id="budgetno" [(ngModel)]="model.budgetno" name="budgetno"
+                                <label class="col-form-label" for="activityno">รหัสกิจกรรม</label>
+                                <input class="form-control" id="activityno" [(ngModel)]="model.activityno" name="activityno"
                                     type="text">
                             </div>
                             <div class="form-group">
@@ -26,17 +26,17 @@
                                 <input class="form-control" id="name" [(ngModel)]="model.name" name="name" type="text">
                             </div>
                             <div class="form-group">
-                                <label for="exampleSelect1">เลือกประเภทงบ</label>
-                                <select class="form-control" id="exampleSelect1" [(ngModel)]="model.type" name="type"
+                                <label for="budgetno">เลือกประเภทงบ</label>
+                                <select class="form-control" id="budgetno" [(ngModel)]="model.budgetno" name="budgetno"
                                     required>
-                                    <option *ngFor="let item of ListTopic" [ngValue]="item.id">{{ item.name }}</option>
+                                    <option *ngFor="let item of ListTopic" [ngValue]="item.budgetno">{{ item.name }}</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label class="col-form-label" for="balance">งบประมาณ</label>
                                 <input class="form-control" id="balance" [(ngModel)]="model.balance" name="balance"
                                     type="number">
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <input type="submit" class="btn btn-success" value="ตกลง">

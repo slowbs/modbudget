@@ -13,13 +13,13 @@ export class FormactivityComponent implements OnInit {
   AppURL = AppURL;
   public ListTopic: ITopic[] = [];
 
-      /** สร้าง model เอาไว้เก็บที่อยู่ใน input */
-      public model: IActivity = {
-        budgetno: '',
-        name: '',
-        activityno: '',
-        balance: ''
-    };
+  /** สร้าง model เอาไว้เก็บที่อยู่ใน input */
+  public model: IActivity = {
+    budgetno: '',
+    name: '',
+    activityno: '',
+    balance: ''
+  };
 
   constructor(
     private budgetService: BudgetService,
@@ -28,16 +28,21 @@ export class FormactivityComponent implements OnInit {
 
   ngOnInit() {
     this.budgetService.getTopics()
+      .subscribe(result => {
+        // console.log(result)
+        this.ListTopic = result
+      },
+        excep => alert(excep.error.message)
+      )
+  }
+
+  onSubmit() {
+    // console.log(this.model)
+    this.budgetService.postActivity(this.model)
     .subscribe(result => {
-      // console.log(result)
-      this.ListTopic = result
+      console.log(result)
     },
     excep => alert(excep.error.message)
-    )
-  }
-  
-  onSubmit() {
-    console.log(this.model)
-  }
+    )}
 
 }

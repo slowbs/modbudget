@@ -3,10 +3,10 @@
 $data = json_decode(file_get_contents('php://input'));
 
 /** Validation */
-if(isset($data->budgetno) && isset($data->name) && isset($data->balance))
+if(isset($data->activityno) && isset($data->name) && isset($data->budgetno))
 {
     #check null
-    if(empty($data->budgetno)){
+    if(empty($data->activityno)){
         http_response_code(400);
         exit(json_encode([
             'message' => 'กรอก หมายเลขงบ'
@@ -18,7 +18,7 @@ if(isset($data->budgetno) && isset($data->name) && isset($data->balance))
             'message' => 'กรอก ชื่อ'
         ]));
     }
-    elseif(empty($data->balance)){
+    elseif(empty($data->budgetno)){
         http_response_code(400);
         exit(json_encode([
             'message' => 'กรอก งบประมาณ'
@@ -28,14 +28,13 @@ if(isset($data->budgetno) && isset($data->name) && isset($data->balance))
     // echo json_encode([
     //     'message' => 'valid'
     // ]);
-    $balance = ($data->income - $data->outcome);
-    $query = "INSERT into total (budgetno, name, total, balance) VALUES (?, ?, ?, ?)";
+    // $balance = ($data->income - $data->outcome);
+    $query = "INSERT into activity (activityno, name, budgetno) VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($database, $query);
-    mysqli_stmt_bind_param($stmt, 'ssss',
-        $data->budgetno,
+    mysqli_stmt_bind_param($stmt, 'sss',
+        $data->activityno,
         $data->name,
-        $data->balance,
-        $data->balance
+        $data->budgetno
     );
     mysqli_stmt_execute($stmt);
     $error_message = mysqli_error($database);
