@@ -24,11 +24,9 @@
                         <th>เลขหนังสือ</th>
                         <th>วันที่</th>
                         <th>ชื่อรายการ</th>
-                        <th>ประเภทงบ</th>
                         <th>รับ</th>
                         <th>จ่าย</th>
                         <th>คืนเงิน</th>
-                        <th>คงเหลือ</th>
                         <th>หมายเหตุ</th>
                         <th>Actions</th>
                         <!-- <th>Username</th> -->
@@ -52,7 +50,6 @@
                         <td>{{ item.bookno }}</td>
                         <td>{{ item.datepick }}</td>
                         <td>{{ item.text }}</td>
-                        <td>{{ item.type }}</td>
                         <td>
                             <font color="green"><b>{{ item.income }}</b></font>
                         </td>
@@ -62,7 +59,6 @@
                         <td>
                             <font color="blue"><b>{{ item.refund }}</b></font>
                         </td>
-                        <td><b>{{ item.balance }}</b></td>
                         <td>{{ item.note }}</td>
                         <td>
                             <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->

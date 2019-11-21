@@ -374,3 +374,12 @@ select id, b.budgetno, name, income, outcome, sum(income - outcome) as balance f
 left join
 (select budgetno, sum(income) as income, sum(outcome) as outcome from list GROUP by budgetno) as l on l.budgetno = b.budgetno)
 group by budgetno
+
+
+//List
+select l.id as id, l.bookno as bookno, l.datepick as datepick,
+l.text as text, income, outcome, refund, note
+from list l
+left join budget b on b.budgetno = l.budgetno
+left join activity a on a.activityno = l.activityno
+where l.budgetno = 1111 and l.activityno = 4444

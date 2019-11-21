@@ -42,8 +42,9 @@ export class BudgetService {
 
 
   /** List */
-  getLists(id: any){
-    return this.httpClient.get<IList[]>(this.backendList, { params: { id }});
+  // getLists(id: any){
+    getLists(budgetno: any, activityno: any ){
+    return this.httpClient.get<IList[]>(this.backendList, { params: { budgetno, activityno }});
   }
 
   postList(value: IList){

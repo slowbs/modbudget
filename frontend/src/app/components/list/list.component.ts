@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BudgetService, IList } from '../budget.service';
+import { BudgetService, IList, IActivity, ITopic } from '../budget.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppURL } from '../../app.url';
 declare const $:any;
@@ -13,7 +13,9 @@ export class ListComponent implements OnInit {
 
   AppURL = AppURL;
   public ListItem: IList[] = [];
-  public Id: IList = Object.assign({});
+  // public Id: IList = Object.assign({});
+  public Activityno: IActivity = Object.assign({});
+  public Budgetno: ITopic = Object.assign({});
 
   constructor(
     private budgetService: BudgetService,
@@ -22,13 +24,14 @@ export class ListComponent implements OnInit {
         /** Param */
         this.activateRoute.params.forEach(queryParam => {
           // console.log(queryParam);
-          this.Id = queryParam.id
+          this.Budgetno = queryParam.budgetno
+          this.Activityno = queryParam.activityno
           // console.log(this.Id)
         })
   }
 
   ngOnInit() {
-    this.budgetService.getLists(this.Id)
+    this.budgetService.getLists(this.Budgetno, this.Activityno)
     .subscribe(result => {
       this.ListItem = result
     })
