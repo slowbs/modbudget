@@ -1,6 +1,5 @@
 <?php
-if(isset($_GET['activityno']))
-{
+if (isset($_GET['activityno'])) {
     $query = 'select id, a.budgetno, a.activityno, name, income, outcome, sum(income - outcome) as balance from (
         (select *  from activity) as a
         left join
@@ -12,5 +11,13 @@ if(isset($_GET['activityno']))
     mysqli_stmt_execute($stmt);
     $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     //$result = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
+    echo json_encode($result);
+} else {
+    $sql = 'SELECT * from activity';
+    $query = mysqli_query($database, $sql);
+    $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+    // $_SESSION['login'] = 'duck';
+
     echo json_encode($result);
 }

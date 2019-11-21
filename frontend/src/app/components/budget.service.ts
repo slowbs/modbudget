@@ -61,6 +61,11 @@ export class BudgetService {
   
 
   /** Activity */
+  /** ดึงกิจกรรมทั้งหมดมาโชว์ใน form */
+  getActivities(){
+    return this.httpClient.get<IActivity[]>(this.backendActivity);
+  }
+
   getActivity(activityno: any){
     return this.httpClient.get<IActivity[]>(this.backendActivity, { params: { activityno }});
   }

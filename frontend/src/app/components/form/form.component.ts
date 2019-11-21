@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IList, BudgetService, ITopic } from '../budget.service';
+import { IList, BudgetService, ITopic, IActivity } from '../budget.service';
 import { Router } from '@angular/router';
 import { AppURL } from '../../app.url';
 declare const $:any;
@@ -12,7 +12,8 @@ declare const $:any;
 export class FormComponent implements OnInit {
 
   AppURL = AppURL;
-  public ListTopic: ITopic[] = [];
+  public ListBudget: ITopic[] = [];
+  public ListActivity: IActivity[] = [];
 
   // public datepick = new Date();
     /** สร้าง model เอาไว้เก็บที่อยู่ใน input */
@@ -35,7 +36,8 @@ export class FormComponent implements OnInit {
   ngOnInit() {
    
     this.datePicker();
-    this.onFormlist();
+    this.budgetFormList();
+    this.activityFormList();
 
   }
 
@@ -50,11 +52,18 @@ export class FormComponent implements OnInit {
     )
   }
   
-  onFormlist(){
+  budgetFormList(){
     this.budgetService.getTopics()
     .subscribe(result => {
       // console.log(result)
-      this.ListTopic = result
+      this.ListBudget = result
+    })
+  }
+
+  activityFormList(){
+    this.budgetService.getActivities()
+    .subscribe(result => {
+      this.ListActivity = result
     })
   }
 
