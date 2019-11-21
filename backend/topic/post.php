@@ -18,18 +18,18 @@ if(isset($data->budgetno) && isset($data->name) && isset($data->balance))
             'message' => 'กรอก ชื่อ'
         ]));
     }
-    elseif(empty($data->balance)){
-        http_response_code(400);
-        exit(json_encode([
-            'message' => 'กรอก งบประมาณ'
-        ]));
-    }
+    // elseif(empty($data->balance)){
+    //     http_response_code(400);
+    //     exit(json_encode([
+    //         'message' => 'กรอก งบประมาณ'
+    //     ]));
+    // }
 
     // echo json_encode([
     //     'message' => 'valid'
     // ]);
     $balance = ($data->income - $data->outcome);
-    $query = "INSERT into total (budgetno, name, total, balance) VALUES (?, ?, ?, ?)";
+    $query = "INSERT into budget (budgetno, name, total, balance) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($database, $query);
     mysqli_stmt_bind_param($stmt, 'ssss',
         $data->budgetno,

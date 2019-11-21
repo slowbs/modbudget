@@ -5,7 +5,7 @@ $sql = 'select id, b.budgetno, name, income, outcome, sum(income - outcome) as b
     (select *  from budget) as b
     left join
     (select budgetno, sum(income) as income, sum(outcome) as outcome from list GROUP by budgetno) as l on l.budgetno = b.budgetno)
-    group by budgetno';
+    group by budgetno order by id';
 $query = mysqli_query($database, $sql);
 $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
