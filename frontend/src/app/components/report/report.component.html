@@ -1,1 +1,57 @@
-<p>report works!</p>
+<app-auth-content>
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> Report</h1>
+            <p>A free and open source Bootstrap 4 admin template</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">รายงาน</a></li>
+        </ul>
+    </div>
+    <div class="tile">
+        <div class="table-responsive">
+            <!-- <div align='right'>
+                <a [routerLink]="['/', AppURL.Form]">
+                <button class="btn btn-success">เพิ่มรายการ</button>
+                </a>
+            </div> -->
+            <br>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>แผนงาน</th>
+                        <th>รหัสกิจกรรม</th>
+                        <th>จัดสรรทั้งหมด</th>
+                        <th>จัดสรรงวด1</th>
+                        <th>ต.ค.</th>
+                        <th>พ.ย.</th>
+                        <th>ธ.ค.</th>
+                        <th>ม.ค.</th>
+                        <th>ก.พ.</th>
+                        <th>มี.ค.</th>
+                        <th>รวมงวด1</th>
+                        <th>คงเหลือ1</th>
+                        <th>เปอ</th>
+                        <th>จัดสรรงวด2</th>
+                        <th>เม.ย.</th>
+                        <th>พ.ค.</th>
+                        <th>มิ.ย.</th>
+                        <th>ก.ค.</th>
+                        <th>ส.ค.</th>
+                        <th>ก.ย.</th>
+                        <th>รวมจ่าย</th>
+                        <th>เปอจ่าย</th>
+                        <th>คงเหลือ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of ListReport">
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</app-auth-content>
