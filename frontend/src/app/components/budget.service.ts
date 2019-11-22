@@ -10,7 +10,8 @@ export class BudgetService {
 
   public updateModelIList: IList = Object.assign({});
   public updateModelITopic: ITopic = Object.assign({});
-  public deleteModel: IList = Object.assign({});
+  public deleteModelIList: IList = Object.assign({});
+  public deleteModelITopic: ITopic = Object.assign({});
 
   private backendAPI: string = environment.production ?
   'http://61.19.202.217/modbudget/backend/api' :
@@ -34,6 +35,14 @@ export class BudgetService {
 
   postTopic(value: ITopic){
     return this.httpClient.post(this.backendTopic, value);
+  }
+
+  putTopic(id: any, value: ITopic){
+    return this.httpClient.put(this.backendTopic, value, { params : { id } });
+  }
+
+  deleteTopic(id: any){
+    return this.httpClient.delete(this.backendTopic, { params: { id } });
   }
 
   /** ดึงข้อมูลรายการทั้งหมด List */

@@ -44,11 +44,11 @@ export class ListComponent implements OnInit {
 
   public onDeleteModal(item: IList){
     // console.log(item);
-    Object.assign(this.budgetService.deleteModel, item);
+    Object.assign(this.budgetService.deleteModelIList, item);
   }
 
   public onDelSubmit(){
-    console.log(this.budgetService.deleteModel)
+    console.log(this.budgetService.deleteModelIList)
     // this.budgetService
     // .deleteItem(this.budgetService.deleteModel.id)
     // .subscribe(result => {
