@@ -13,6 +13,7 @@ import { FormtotalComponent } from './components/formtotal/formtotal.component';
 import { FormmodalComponent } from './components/formmodal/formmodal.component';
 import { FormactivityComponent } from './components/formactivity/formactivity.component';
 import { ActivityComponent } from './components/activity/activity.component';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ActivityComponent } from './components/activity/activity.component';
     FormtotalComponent,
     FormmodalComponent,
     FormactivityComponent,
-    ActivityComponent
+    ActivityComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

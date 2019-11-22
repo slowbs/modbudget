@@ -28,7 +28,7 @@ if(isset($_GET['budgetno']) && isset($_GET['activityno']))
 
 
     $query = 'select l.id as id, l.bookno as bookno, l.datepick as datepick,
-    l.text as text, income, outcome, refund, note
+    l.text as text, income, outcome, refund, note, workgroup, person
     from list l
     left join budget b on b.budgetno = l.budgetno
     left join activity a on a.activityno = l.activityno

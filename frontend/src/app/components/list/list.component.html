@@ -28,6 +28,8 @@
                         <th>จ่าย</th>
                         <th>คืนเงิน</th>
                         <th>หมายเหตุ</th>
+                        <th>ผู้รับผิดชอบ</th>
+                        <th>กลุ่มงาน</th>
                         <th>Actions</th>
                         <!-- <th>Username</th> -->
                     </tr>
@@ -60,6 +62,8 @@
                             <font color="blue"><b>{{ item.refund }}</b></font>
                         </td>
                         <td>{{ item.note }}</td>
+                        <td>{{ item.person }}</td>
+                        <td>{{ item.workgroup }}</td>
                         <td>
                             <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->
                             <a href="#editListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">

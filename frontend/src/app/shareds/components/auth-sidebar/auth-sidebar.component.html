@@ -8,10 +8,20 @@
     </div>
   </div>
   <ul class="app-menu">
-    <li><a class="app-menu__item" [routerLink]="['/', AppURL.Index]" routerLinkActive="active"><i
-          class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">แดชบอร์ด</span></a></li>
+    <!-- <li><a class="app-menu__item" [routerLink]="['/', AppURL.Index]" routerLinkActive="active"><i
+          class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">แดชบอร์ด</span></a></li> -->
     <!-- <li><a class="app-menu__item" [routerLink]="['/', AppURL.Form]" routerLinkActive="active"> <i
           class="app-menu__icon fa fa-plus"></i><span class="app-menu__label">เพิ่มข้อมูล</span></a></li> -->
+    <li class="treeview" routerLinkActive="is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+          class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">แดชบอร์ด</span><i
+          class="treeview-indicator fa fa-angle-right"></i></a>
+      <ul class="treeview-menu">
+        <li><a class="treeview-item" [routerLink]="['/', AppURL.Index]" routerLinkActive="active">
+            <i class="icon fa fa-dashboard"></i> แดชบอร์ด</a></li>
+        <li><a class="treeview-item" [routerLink]="['/', AppURL.Report]" routerLinkActive="active">
+            <i class="icon fa fa-circle-o"></i> รายงาน</a></li>
+      </ul>
+    </li>
     <li class="treeview" routerLinkActive="is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i
           class="app-menu__icon fa fa-plus"></i><span class="app-menu__label">เพิ่มข้อมูล</span><i
           class="treeview-indicator fa fa-angle-right"></i></a>
