@@ -10,8 +10,10 @@ export class BudgetService {
 
   public updateModelIList: IList = Object.assign({});
   public updateModelITopic: ITopic = Object.assign({});
+  public updateModelIActivity: IActivity = Object.assign({});
   public deleteModelIList: IList = Object.assign({});
   public deleteModelITopic: ITopic = Object.assign({});
+  public deleteModelIActivity: IActivity = Object.assign({});
 
   private backendAPI: string = environment.production ?
   'http://61.19.202.217/modbudget/backend/api' :
@@ -82,6 +84,14 @@ export class BudgetService {
 
   postActivity(value: IActivity){
     return this.httpClient.post<IActivity[]>(this.backendActivity, value)
+  }
+
+  putActivity(id: any, value: IActivity){
+    return this.httpClient.put(this.backendActivity, value, { params : { id } });
+  }
+
+  deleteActivity(id: any){
+    return this.httpClient.delete(this.backendActivity, { params: { id } });
   }
 }
 

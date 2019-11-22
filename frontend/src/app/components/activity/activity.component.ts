@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BudgetService, IActivity } from '../budget.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppURL } from '../../app.url'
+declare const $:any;
 
 @Component({
   selector: 'app-activity',
@@ -10,13 +11,14 @@ import { AppURL } from '../../app.url'
 })
 export class ActivityComponent implements OnInit {
 
-  AppURL = AppURL;  
+  public model: IActivity;
+  AppURL = AppURL;
 
   public ActivityItem: IActivity[] = [];
   public Activityno: IActivity = Object.assign({});
 
   constructor(
-    private budgetSerivce: BudgetService,
+    private budgetService: BudgetService,
     private activateRoute: ActivatedRoute
   ) {
     /** Param */
@@ -25,14 +27,53 @@ export class ActivityComponent implements OnInit {
       this.Activityno = queryParam.activityno
       // console.log(this.Id)
     })
+
+    this.model = this.budgetService.updateModelIActivity
   }
 
   ngOnInit() {
-      this.budgetSerivce.getActivity(this.Activityno)
-        .subscribe(result => {
-          console.log(result)
-          this.ActivityItem = result
-        })
-      }
+    this.budgetService.getActivity(this.Activityno)
+      .subscribe(result => {
+        // console.log(result)
+        this.ActivityItem = result
+      })
+  }
+
+  public onEditModal(item: IActivity) {
+    // console.log(item);
+    Object.assign(this.budgetService.updateModelIActivity, item);
+  }
+
+  public onDeleteModal(item: IActivity) {
+    // console.log(item);
+    Object.assign(this.budgetService.deleteModelIActivity, item);
+  }
+
+  onUpdateSubmit(){
+    // console.log(this.model)
+    this.budgetService
+    .putActivity(this.model.id, this.model)
+    .subscribe( result => {
+      // console.log(result)
+      $('#editListModal').modal('hide');
+      // this.router.navigate(['/', AppURL.List, 1])
+      // this.router.navigate(['/', AppURL.Index])
+      this.ngOnInit();
+    },
+    excep => alert(excep.error.message)
+    )
+  }
+
+  onDeleteSubmit(){
+    // console.log(this.budgetService.deleteModelIActivity)
+    this.budgetService
+    .deleteActivity(this.budgetService.deleteModelIActivity.id)
+    .subscribe( result => {
+      $('#deleteListModal').modal('hide')
+      this.ngOnInit()
+    },
+    excep => alert(excep.error.message)
+    )
+  }
 
 }

@@ -40,18 +40,18 @@ export class IndexComponent implements OnInit {
   }
 
   onUpdateSubmit(){
-    console.log(this.model)
-    // this.budgetService
-    // .putTopic(this.model.id, this.model)
-    // .subscribe( result => {
-    //   // console.log(result)
-    //   $('#editListModal').modal('hide');
-    //   // this.router.navigate(['/', AppURL.List, 1])
-    //   // this.router.navigate(['/', AppURL.Index])
-    //   this.ngOnInit();
-    // },
-    // excep => alert(excep.error.message)
-    // )
+    // console.log(this.model)
+    this.budgetService
+    .putTopic(this.model.id, this.model)
+    .subscribe( result => {
+      // console.log(result)
+      $('#editListModal').modal('hide');
+      // this.router.navigate(['/', AppURL.List, 1])
+      // this.router.navigate(['/', AppURL.Index])
+      this.ngOnInit();
+    },
+    excep => alert(excep.error.message)
+    )
   }
 
   onDeleteSubmit(){
