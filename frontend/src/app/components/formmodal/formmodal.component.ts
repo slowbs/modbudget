@@ -22,7 +22,7 @@ export class FormmodalComponent implements OnInit {
     private budgetService: BudgetService,
     private router: Router
   ) {
-    this.model = this.budgetService.updateModel
+    this.model = this.budgetService.updateModelIList
   }
 
   ngOnInit() {

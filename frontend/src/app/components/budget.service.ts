@@ -8,7 +8,8 @@ import { environment } from '../../environments/environment';
 })
 export class BudgetService {
 
-  public updateModel: IList = Object.assign({});
+  public updateModelIList: IList = Object.assign({});
+  public updateModelITopic: ITopic = Object.assign({});
   public deleteModel: IList = Object.assign({});
 
   private backendAPI: string = environment.production ?

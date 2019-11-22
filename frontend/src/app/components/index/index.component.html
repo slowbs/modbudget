@@ -20,6 +20,7 @@
                         <th>จัดสรร</th>
                         <th>เบิกจ่าย</th>
                         <th>คงเหลือ</th>
+                        <th>Action</th>
                         <!-- <th>Username</th> -->
                     </tr>
                 </thead>
@@ -44,10 +45,91 @@
                         <td>{{ item.income }}</td>
                         <td>{{ item.outcome }}</td>
                         <td>{{ item.balance }}</td>
+                        <td>
+                            <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->
+                            <a href="#editListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">
+                                <i class="fa fa-pencil-square-o fa-lg" style="margin:5px" data-toggle="tooltip"
+                                    title="แก้ไข" aria-hidden="true"></i></a>
+                            <a href="#deleteListModal" class="delete" data-toggle="modal" (click)="onDeleteModal(item)">
+                                <i class="fa fa-window-close fa-lg" style="margin:5px; color:#F44336"
+                                    data-toggle="tooltip" title="ลบ" aria-hidden="true"></i></a>
+                        </td>
                         <!-- <td>{{ item.created }}</td> -->
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Edit Modal HTML -->
+    <div id="editListModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form (submit)="onUpdateSubmit()" [noValidate]="false">
+                    <div class="modal-header">
+                        <h4 class="modal-title">แก้ไขรายการ</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="sandbox-container">
+                            <div class="col-md-12">
+                                <!-- <form (submit)="onSubmit()" [noValidate]="false"> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="budgetno">หมายเลขงบ</label>
+                                            <input class="form-control" id="budgetno" [(ngModel)]="model.budgetno"
+                                                name="budgetno" type="text">
+                                        </div>
+                                        <!-- <div class="form-group">
+                                                <label class="col-form-label" for="balance">งบประมาณ</label>
+                                                <input class="form-control" id="balance" [(ngModel)]="model.balance" name="balance"
+                                                    type="number">
+                                            </div> -->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="name">ชื่อ</label>
+                                            <input class="form-control" id="name" [(ngModel)]="model.name" name="name"
+                                                type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Delete Modal HTML -->
+    <div id="deleteListModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form (submit)="onDelSubmit()">
+                    <div class="modal-header">
+                        <h4 class="modal-title">ลบรายการ</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>ยืนยันที่จะลบรายการนี้ ?</p>
+                        <p class="text-warning"><small>การลบรายการต่อไปนี้จะไม่สามารถแก้ไขคืนกลับได้</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </app-auth-content>

@@ -9,12 +9,15 @@ import { AppURL } from '../../app.url';
 })
 export class IndexComponent implements OnInit {
 
+  public model: ITopic;
   public TopicItem: ITopic[] = [];
   AppURL = AppURL;
 
   constructor(
     private budgetService: BudgetService
-  ) { }
+  ) { 
+    this.model = this.budgetService.updateModelITopic
+  }
 
   ngOnInit() {
     this.budgetService.getTopics()
@@ -23,6 +26,11 @@ export class IndexComponent implements OnInit {
       // console.log(result)
       this.TopicItem = result
     })
+  }
+
+  public onEditModal(item: ITopic){
+    // console.log(item);
+    Object.assign(this.budgetService.updateModelITopic, item);
   }
 
 }

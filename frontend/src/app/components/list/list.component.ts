@@ -39,7 +39,7 @@ export class ListComponent implements OnInit {
 
   public onEditModal(item: IList){
     // console.log(item);
-    Object.assign(this.budgetService.updateModel, item);
+    Object.assign(this.budgetService.updateModelIList, item);
   }
 
   public onDeleteModal(item: IList){
