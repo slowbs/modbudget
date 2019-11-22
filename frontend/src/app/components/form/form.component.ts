@@ -21,10 +21,13 @@ export class FormComponent implements OnInit {
       bookno: '',
       text: '',
       datepick: new Date(),
-      type: '',
+      budgetno: '',
+      activityno: '',
       income: '0',
       outcome: '0',
       refund: '0',
+      person: '',
+      workgroup: '',
       note: ''
     };
 
@@ -55,7 +58,7 @@ export class FormComponent implements OnInit {
   budgetFormList(){
     this.budgetService.getTopics()
     .subscribe(result => {
-      // console.log(result)
+      console.log(result)
       this.ListBudget = result
     })
   }
@@ -63,6 +66,7 @@ export class FormComponent implements OnInit {
   activityFormList(){
     this.budgetService.getActivities()
     .subscribe(result => {
+      console.log(result)
       this.ListActivity = result
     })
   }

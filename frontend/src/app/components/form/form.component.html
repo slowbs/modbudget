@@ -27,8 +27,8 @@
                                     type="text" required>
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="group">กลุ่มงาน</label>
-                                <input class="form-control" id="group" [(ngModel)]="model.group" name="group"
+                                <label class="col-form-label" for="workgroup">กลุ่มงาน</label>
+                                <input class="form-control" id="workgroup" [(ngModel)]="model.workgroup" name="workgroup"
                                     type="text" required>
                             </div>
                             <div class="form-group">
@@ -58,16 +58,16 @@
                             </div>
                             <div class="form-group">
                                     <label class="col-form-label" for="budgetno">เลือกประเภทงบ</label>
-                                <select class="form-control" id="exampleSelect1" [(ngModel)]="model.buegetno"
-                                    name="betgetno" required>
-                                    <option *ngFor="let item of ListBudget" [ngValue]="item.id">{{ item.name }}</option>
+                                <select class="form-control" id="budgetno" [(ngModel)]="model.budgetno"
+                                    name="budgetno" required>
+                                    <option *ngFor="let item of ListBudget" [ngValue]="item.budgetno">{{ item.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                     <label class="col-form-label" for="activityno">เลือกประเภทกิจกรรม</label>
                                 <select class="form-control" id="activityno" [(ngModel)]="model.activityno"
                                     name="activityno" required>
-                                    <option *ngFor="let item of ListActivity" [ngValue]="item.id">{{ item.name }}</option>
+                                    <option *ngFor="let item of ListActivity" [ngValue]="item.activityno">{{ item.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">

@@ -32,18 +32,22 @@ if(isset($data->bookno) && isset($data->text))
     // echo json_encode([
     //     'message' => 'valid'
     // ]);
-    $balance = $balance + ($data->income - $data->outcome + $data->refund);
-    $query = "INSERT into list (bookno, datepick, type, text, income, outcome, refund, balance, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    // $balance = $balance + ($data->income - $data->outcome + $data->refund);
+    $balance = '0';
+    $query = "INSERT into list (bookno, datepick, text, budgetno, activityno, income, outcome, refund, balance, person, workgroup, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($database, $query);
-    mysqli_stmt_bind_param($stmt, 'sssssssss',
+    mysqli_stmt_bind_param($stmt, 'ssssssssssss',
         $data->bookno,
         $data->datepick,
-        $data->type,
         $data->text,
+        $data->budgetno,
+        $data->activityno,
         $data->income,
         $data->outcome,
         $data->refund,
         $balance,
+        $data->person,
+        $data->workgroup,
         $data->note
     );
     mysqli_stmt_execute($stmt);

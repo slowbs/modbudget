@@ -79,12 +79,16 @@ export interface IList {
   id?: string;
   datepick: Date;
   bookno: string;
-  type: string;
+  // type: string;
+  budgetno: string;
+  activityno: string;
   text: string;
   income?: string;
   outcome?: string;
   refund?: string;
   balance?: string;
+  person: string;
+  workgroup: string;
   note?: string;
   created?: string;
   updated?: string;
