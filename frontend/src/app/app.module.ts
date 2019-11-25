@@ -14,6 +14,7 @@ import { FormmodalComponent } from './components/formmodal/formmodal.component';
 import { FormactivityComponent } from './components/formactivity/formactivity.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { ReportComponent } from './components/report/report.component';
+import { ProjectComponent } from './components/project/project.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ReportComponent } from './components/report/report.component';
     FormmodalComponent,
     FormactivityComponent,
     ActivityComponent,
-    ReportComponent
+    ReportComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,

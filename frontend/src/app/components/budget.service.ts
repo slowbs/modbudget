@@ -79,8 +79,8 @@ export class BudgetService {
     return this.httpClient.get<IActivity[]>(this.backendActivity);
   }
 
-  getActivity(activityno: any){
-    return this.httpClient.get<IActivity[]>(this.backendActivity, { params: { activityno }});
+  getActivity(budgetno: any){
+    return this.httpClient.get<IActivity[]>(this.backendActivity, { params: { budgetno }});
   }
 
   postActivity(value: IActivity){

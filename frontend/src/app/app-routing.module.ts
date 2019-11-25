@@ -8,6 +8,7 @@ import { FormtotalComponent } from './components/formtotal/formtotal.component';
 import { FormactivityComponent } from './components/formactivity/formactivity.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { ReportComponent } from './components/report/report.component';
+import { ProjectComponent } from './components/project/project.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: AppURL.FormActivity, component: FormactivityComponent },
   { path: AppURL.Activity, component: ActivityComponent },
   { path: AppURL.Activity + '/:budgetno', component: ActivityComponent },
-  { path: AppURL.Report, component: ReportComponent }
+  { path: AppURL.Report, component: ReportComponent },
+  { path: AppURL.Project, component: ProjectComponent },
+  { path: AppURL.Project + '/:budgetno' + '/:activityno', component: ProjectComponent}
 ];
 
 @NgModule({

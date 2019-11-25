@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET['budgetno'])) {
+if (isset($_GET['activityno'])) {
     $query = 'select id, a.budgetno, a.activityno, name, income, outcome, sum(income - outcome) as balance from (
         (select *  from activity) as a
         left join
@@ -7,7 +7,7 @@ if (isset($_GET['budgetno'])) {
         where budgetno = ?
         group by activityno';
     $stmt = mysqli_prepare($database, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $_GET['budgetno']);
+    mysqli_stmt_bind_param($stmt, 'i', $_GET['activityno']);
     mysqli_stmt_execute($stmt);
     $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     //$result = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
