@@ -130,3 +130,7 @@ export interface IActivity {
   name: string;
   balance?: string;
 }
+
+export interface IReport{
+  
+}

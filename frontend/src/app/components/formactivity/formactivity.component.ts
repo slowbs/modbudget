@@ -40,7 +40,8 @@ export class FormactivityComponent implements OnInit {
     // console.log(this.model)
     this.budgetService.postActivity(this.model)
     .subscribe(result => {
-      console.log(result)
+      // console.log(result)
+      this.router.navigate(['/',AppURL.Index])
     },
     excep => alert(excep.error.message)
     )}

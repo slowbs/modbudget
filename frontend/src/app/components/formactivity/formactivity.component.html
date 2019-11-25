@@ -18,28 +18,30 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="col-form-label" for="activityno">รหัสกิจกรรม</label>
-                                <input class="form-control" id="activityno" [(ngModel)]="model.activityno" name="activityno"
-                                    type="text">
+                                <input class="form-control" id="activityno" [(ngModel)]="model.activityno"
+                                    name="activityno" type="text">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label" for="name">ชื่อ</label>
+                                <label class="col-form-label" for="name">ชื่อกิจกรรม</label>
                                 <input class="form-control" id="name" [(ngModel)]="model.name" name="name" type="text">
                             </div>
+                        </div>
+                        <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="budgetno">เลือกประเภทงบ</label>
+                                <label class="col-form-label" for="budgetno">เลือกประเภทงบ</label>
                                 <select class="form-control" id="budgetno" [(ngModel)]="model.budgetno" name="budgetno"
                                     required>
-                                    <option *ngFor="let item of ListTopic" [ngValue]="item.budgetno">{{ item.name }}</option>
+                                    <option *ngFor="let item of ListTopic" [ngValue]="item.budgetno">{{ item.name }}
+                                    </option>
                                 </select>
                             </div>
-                            <!-- <div class="form-group">
-                                <label class="col-form-label" for="balance">งบประมาณ</label>
-                                <input class="form-control" id="balance" [(ngModel)]="model.balance" name="balance"
-                                    type="number">
-                            </div> -->
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-success" value="ตกลง">
+                    <div align='center'>
+                        <input type="submit" class="btn btn-success" value="ตกลง">
+                        <a [routerLink]="['/', AppURL.Index]"><button class="btn btn-danger btn-spacing">
+                                ยกเลิก</button></a>
+                    </div>
                 </form>
             </div>
         </div>
