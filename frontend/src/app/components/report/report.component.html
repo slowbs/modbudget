@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>แผนงาน</th>
+                        <th style="min-width: 350px;">แผนงาน</th>
                         <th>รหัสกิจกรรม</th>
                         <th>จัดสรรทั้งหมด</th>
                         <th>จัดสรรงวด1</th>
@@ -47,8 +47,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of ListReport">
-
+                    <tr *ngFor="let item of reportItem; let i = index">
+                        <td>{{ i+1 }}</td>
+                        <!-- <td>{{ item.id }}</td> -->
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.activityno }}</td>
+                        <td>{{ item.income }}</td>
+                        <td>{{ item.sum_income1 }}</td>
+                        <td>{{ item.m_10 }}</td>
+                        <td>{{ item.m_11 }}</td>
+                        <td>{{ item.m_12 }}</td>
+                        <td>{{ item.m_1 }}</td>
+                        <td>{{ item.m_2 }}</td>
+                        <td>{{ item.m_3 }}</td>
+                        <td>{{ item.sum_outcome1 }}</td>
+                        <td>{{ item.balance1 }}</td>
+                        <td>{{ item.per1 }}</td>
+                        <td>{{ item.sum_income2 }}</td>
+                        <td>{{ item.m_4 }}</td>
+                        <td>{{ item.m_5 }}</td>
+                        <td>{{ item.m_6 }}</td>
+                        <td>{{ item.m_7 }}</td>
+                        <td>{{ item.m_8 }}</td>
+                        <td>{{ item.m_9 }}</td>
+                        <td>{{ item.outcome }}</td>
+                        <td>{{ item.per2 }}</td>
+                        <td>{{ item.totalbalance }}</td>
                     </tr>
                 </tbody>
             </table>

@@ -17,6 +17,9 @@ $routes['/api/activity']['POST'] = 'activity/post.php';
 $routes['/api/activity']['PUT'] = 'activity/put.php';
 $routes['/api/activity']['DELETE'] = 'activity/delete.php';
 
+/** Report */
+$routes['/api/report']['GET'] = 'report/get.php';
+
 
 /** เอาไว้เทส session หน้า login ของ php */
 //$routes['/api/login']['GET'] = 'account/login.php';

@@ -24,6 +24,7 @@ export class BudgetService {
   // private backendList: string = `${backendURL}/api/list`;
   private backendList: string = this.backendAPI + '/list';
   private backendActivity: string = this.backendAPI + '/activity';
+  private backendReport: string = this.backendAPI + '/report';
 
   constructor(
     private httpClient: HttpClient
@@ -93,6 +94,12 @@ export class BudgetService {
   deleteActivity(id: any){
     return this.httpClient.delete(this.backendActivity, { params: { id } });
   }
+
+
+  /** Report */
+  getReport(){
+    return this.httpClient.get<IReport[]>(this.backendReport);
+  }
 }
 
 export interface IList {
@@ -132,5 +139,30 @@ export interface IActivity {
 }
 
 export interface IReport{
-  
+  id: string;
+  text: string;
+  budgetno: string;
+  activityno: string;
+  name: string;
+  income: string;
+  sum_income1: string;
+  m_10: string;
+  m_11: string;
+  m_12: string;
+  m_1: string;
+  m_2: string;
+  m_3: string;
+  sum_outcome1: string;
+  balance1: string;
+  per1: string;
+  sum_income2: string;
+  m_4: string;
+  m_5: string;
+  m_6: string;
+  m_7: string;
+  m_8: string;
+  m_9: string;
+  outcome: string;
+  per2: string;
+  totalbalance: string;
 }
