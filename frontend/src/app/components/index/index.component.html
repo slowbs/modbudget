@@ -10,6 +10,9 @@
         </ul>
     </div>
     <div class="tile">
+        <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">
+                <button class="btn btn-success">เพิ่มรายการ</button></a></div>
+        <br>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
@@ -61,6 +64,48 @@
         </div>
     </div>
 
+    <!-- Insert Modal HTML -->
+    <div id="insertListModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form (submit)="onInsertSubmit()" [noValidate]="false">
+                    <div class="modal-header">
+                        <h4 class="modal-title">เพิ่มรายการ</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="sandbox-container">
+                            <div class="col-md-12">
+                                <!-- <form (submit)="onSubmit()" [noValidate]="false"> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="budgetno">หมายเลขงบ</label>
+                                            <input class="form-control" id="budgetno" [(ngModel)]="model.budgetno"
+                                                name="budgetno" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="name">ชื่อ</label>
+                                            <input class="form-control" id="name" [(ngModel)]="model.name" name="name"
+                                                type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Edit Modal HTML -->
     <div id="editListModal" class="modal fade">
         <div class="modal-dialog modal-lg">
@@ -107,8 +152,6 @@
             </div>
         </div>
     </div>
-
-
 
 
     <!-- Delete Modal HTML -->

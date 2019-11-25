@@ -66,4 +66,17 @@ export class IndexComponent implements OnInit {
     )
   }
 
+  onInsertSubmit(){
+    this.model.balance = ''
+    // console.log(this.model)
+    this.budgetService
+    .postTopic(this.model)
+    .subscribe( result => {
+      $('#insertListModal').modal('hide')
+      this.ngOnInit()
+    },
+    excep => alert(excep.error.message)
+    )
+  }
+
 }
