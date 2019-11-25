@@ -24,22 +24,9 @@
                         <th>เบิกจ่าย</th>
                         <th>คงเหลือ</th>
                         <th>Action</th>
-                        <!-- <th>Username</th> -->
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr> -->
                     <tr *ngFor="let item of TopicItem">
                         <td>{{ item.id }}</td>
                         <td>{{ item.budgetno }}</td>
@@ -88,8 +75,8 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="name">ชื่อ</label>
-                                            <input class="form-control" id="name" [(ngModel)]="modelInsert.name" name="name"
-                                                type="text">
+                                            <input class="form-control" id="name" [(ngModel)]="modelInsert.name"
+                                                name="name" type="text">
                                         </div>
                                     </div>
                                 </div>

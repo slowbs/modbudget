@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetService, ITopic } from '../budget.service';
 import { AppURL } from '../../app.url';
-declare const $:any;
+declare const $: any;
 
 @Component({
   selector: 'app-index',
@@ -9,7 +9,7 @@ declare const $:any;
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  
+
   public modelInsert: ITopic = {
     budgetno: '',
     name: ''
@@ -20,78 +20,78 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private budgetService: BudgetService
-  ) { 
+  ) {
     this.model = this.budgetService.updateModelITopic
   }
 
   ngOnInit() {
     this.budgetService.getTopics()
-    .subscribe(result => {
-      // this.TopicItem = result['result']
-      // console.log(result)
-      this.TopicItem = result
-    })
+      .subscribe(result => {
+        // this.TopicItem = result['result']
+        // console.log(result)
+        this.TopicItem = result
+      })
   }
 
-  public onEditModal(item: ITopic){
+  public onEditModal(item: ITopic) {
     // console.log(item);
     Object.assign(this.budgetService.updateModelITopic, item);
   }
 
-  public onDeleteModal(item: ITopic){
+  public onDeleteModal(item: ITopic) {
     // console.log(item);
     Object.assign(this.budgetService.deleteModelITopic, item);
   }
 
-  onUpdateSubmit(){
+  onUpdateSubmit() {
     // console.log(this.model)
     this.budgetService
-    .putTopic(this.model.id, this.model)
-    .subscribe( result => {
-      // console.log(result)
-      $('#editListModal').modal('hide');
-      // this.router.navigate(['/', AppURL.List, 1])
-      // this.router.navigate(['/', AppURL.Index])
-      this.ngOnInit();
-    },
-    excep => alert(excep.error.message)
-    )
+      .putTopic(this.model.id, this.model)
+      .subscribe(result => {
+        // console.log(result)
+        $('#editListModal').modal('hide');
+        // this.router.navigate(['/', AppURL.List, 1])
+        // this.router.navigate(['/', AppURL.Index])
+        this.ngOnInit();
+      },
+        excep => alert(excep.error.message)
+      )
   }
 
-  onDeleteSubmit(){
+  onDeleteSubmit() {
     // console.log(this.budgetService.deleteModelITopic)
     this.budgetService
-    .deleteTopic(this.budgetService.deleteModelITopic.id)
-    .subscribe( result => {
-      $('#deleteListModal').modal('hide')
-      this.ngOnInit()
-    },
-    excep => alert(excep.error.message)
-    )
+      .deleteTopic(this.budgetService.deleteModelITopic.id)
+      .subscribe(result => {
+        $('#deleteListModal').modal('hide')
+        this.ngOnInit()
+      },
+        excep => alert(excep.error.message)
+      )
   }
 
-  onInsertSubmit(){
+  onInsertSubmit() {
     this.modelInsert.balance = ''
     // console.log(this.model)
     this.budgetService
-    .postTopic(this.modelInsert)
-    .subscribe( result => {
-      $('#insertListModal').modal('hide')
-      this.ngOnInit()
-      this.onResetModel()
-    },
-    excep => alert(excep.error.message)
-    )
+      .postTopic(this.modelInsert)
+      .subscribe(result => {
+        $('#insertListModal').modal('hide')
+        this.ngOnInit()
+        this.onResetModel()
+      },
+        excep => alert(excep.error.message)
+      )
   }
 
-    /** เคลียค่า modal form */
-    public onResetModel(){
-      // this.model.budgetno = ''
-      // this.model.name = ''
-      this.modelInsert = {
-        budgetno:'',
-        name: ''
-      }
+  /** เคลียค่า modal form */
+  public onResetModel() {
+    // this.model.budgetno = ''
+    // this.model.name = ''
+    this.modelInsert = {
+      budgetno: '',
+      name: ''
     }
+  }
 
 }

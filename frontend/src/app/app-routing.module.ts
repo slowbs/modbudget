@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: AppURL.List + '/:budgetno' + '/:activityno', component: ListComponent },
   { path: AppURL.FormActivity, component: FormactivityComponent },
   { path: AppURL.Activity, component: ActivityComponent },
-  { path: AppURL.Activity + '/:activityno', component: ActivityComponent },
+  { path: AppURL.Activity + '/:budgetno', component: ActivityComponent },
   { path: AppURL.Report, component: ReportComponent }
 ];
 

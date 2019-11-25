@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BudgetService, IActivity } from '../budget.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppURL } from '../../app.url'
-declare const $:any;
+declare const $: any;
 
 @Component({
   selector: 'app-activity',
@@ -11,11 +11,18 @@ declare const $:any;
 })
 export class ActivityComponent implements OnInit {
 
+  public modelInsert: IActivity = {
+    budgetno: '',
+    name: '',
+    activityno: '',
+    balance: ''
+  };
+
   public model: IActivity;
   AppURL = AppURL;
 
   public ActivityItem: IActivity[] = [];
-  public Activityno: IActivity = Object.assign({});
+  public Budgetno: IActivity = Object.assign({});
 
   constructor(
     private budgetService: BudgetService,
@@ -24,15 +31,16 @@ export class ActivityComponent implements OnInit {
     /** Param */
     this.activateRoute.params.forEach(queryParam => {
       // console.log(queryParam);
-      this.Activityno = queryParam.activityno
-      // console.log(this.Id)
+      this.Budgetno = queryParam.budgetno
+      this.modelInsert.budgetno = queryParam.budgetno
+      // console.log(this.Budgetno, this.modelInsert.budgetno, queryParam.budgetno)
     })
 
     this.model = this.budgetService.updateModelIActivity
   }
 
   ngOnInit() {
-    this.budgetService.getActivity(this.Activityno)
+    this.budgetService.getActivity(this.Budgetno)
       .subscribe(result => {
         // console.log(result)
         this.ActivityItem = result
@@ -49,31 +57,51 @@ export class ActivityComponent implements OnInit {
     Object.assign(this.budgetService.deleteModelIActivity, item);
   }
 
-  onUpdateSubmit(){
+  onInsertSubmit() {
+    // this.modelInsert.budgetno = this.Budgetno
     // console.log(this.model)
     this.budgetService
-    .putActivity(this.model.id, this.model)
-    .subscribe( result => {
-      // console.log(result)
-      $('#editListModal').modal('hide');
-      // this.router.navigate(['/', AppURL.List, 1])
-      // this.router.navigate(['/', AppURL.Index])
-      this.ngOnInit();
-    },
-    excep => alert(excep.error.message)
-    )
+      .postActivity(this.modelInsert)
+      .subscribe(result => {
+        $('#insertListModal').modal('hide')
+        this.ngOnInit()
+        this.onResetModel()
+      },
+        excep => alert(excep.error.message)
+      )
   }
 
-  onDeleteSubmit(){
+  /** เคลียค่า modal form */
+  public onResetModel() {
+    this.modelInsert.activityno = ''
+    this.modelInsert.name = ''
+  }
+
+  onUpdateSubmit() {
+    // console.log(this.model)
+    this.budgetService
+      .putActivity(this.model.id, this.model)
+      .subscribe(result => {
+        // console.log(result)
+        $('#editListModal').modal('hide');
+        // this.router.navigate(['/', AppURL.List, 1])
+        // this.router.navigate(['/', AppURL.Index])
+        this.ngOnInit();
+      },
+        excep => alert(excep.error.message)
+      )
+  }
+
+  onDeleteSubmit() {
     // console.log(this.budgetService.deleteModelIActivity)
     this.budgetService
-    .deleteActivity(this.budgetService.deleteModelIActivity.id)
-    .subscribe( result => {
-      $('#deleteListModal').modal('hide')
-      this.ngOnInit()
-    },
-    excep => alert(excep.error.message)
-    )
+      .deleteActivity(this.budgetService.deleteModelIActivity.id)
+      .subscribe(result => {
+        $('#deleteListModal').modal('hide')
+        this.ngOnInit()
+      },
+        excep => alert(excep.error.message)
+      )
   }
 
 }

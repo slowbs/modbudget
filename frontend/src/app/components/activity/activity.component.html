@@ -10,12 +10,15 @@
         </ul>
     </div>
     <div class="tile">
+        <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal">
+                <button class="btn btn-success">เพิ่มรายการ</button></a></div>
+        <br>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>หมายเลขงบ</th>
+                        <th>หมายเลขกิจกรรม</th>
                         <th>ชื่อกิจกรรม</th>
                         <th>จัดสรร</th>
                         <th>เบิกจ่าย</th>
@@ -25,18 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr> -->
+
                     <tr *ngFor="let item of ActivityItem">
                         <td>{{ item.id }}</td>
                         <td>{{ item.activityno }}</td>
@@ -62,6 +54,45 @@
         </div>
     </div>
 
+    <!-- Insert Modal HTML -->
+    <div id="insertListModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form (submit)="onInsertSubmit()" [noValidate]="false">
+                    <div class="modal-header">
+                        <h4 class="modal-title">เพิ่มรายการ</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="sandbox-container">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="activityno">หมายเลขกิจกรรม</label>
+                                            <input class="form-control" id="activityno" [(ngModel)]="modelInsert.activityno"
+                                                name="activityno" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="name">ชื่อ</label>
+                                            <input class="form-control" id="name" [(ngModel)]="modelInsert.name"
+                                                name="name" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Edit Modal HTML -->
     <div id="editListModal" class="modal fade">
@@ -75,19 +106,13 @@
                     <div class="modal-body">
                         <div class="row" id="sandbox-container">
                             <div class="col-md-12">
-                                <!-- <form (submit)="onSubmit()" [noValidate]="false"> -->
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="col-form-label" for="activityno">หมายเลขงบ</label>
+                                            <label class="col-form-label" for="activityno">หมายเลขกิจกรรม</label>
                                             <input class="form-control" id="activityno" [(ngModel)]="model.activityno"
                                                 name="activityno" type="text">
                                         </div>
-                                        <!-- <div class="form-group">
-                                                <label class="col-form-label" for="balance">งบประมาณ</label>
-                                                <input class="form-control" id="balance" [(ngModel)]="model.balance" name="balance"
-                                                    type="number">
-                                            </div> -->
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -97,7 +122,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- </form> -->
                             </div>
                         </div>
                     </div>
