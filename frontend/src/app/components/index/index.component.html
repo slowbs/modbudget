@@ -10,7 +10,7 @@
         </ul>
     </div>
     <div class="tile">
-        <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">
+        <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal">
                 <button class="btn btn-success">เพิ่มรายการ</button></a></div>
         <br>
         <div class="table-responsive">
@@ -81,14 +81,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="budgetno">หมายเลขงบ</label>
-                                            <input class="form-control" id="budgetno" [(ngModel)]="model.budgetno"
+                                            <input class="form-control" id="budgetno" [(ngModel)]="modelInsert.budgetno"
                                                 name="budgetno" type="text">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="name">ชื่อ</label>
-                                            <input class="form-control" id="name" [(ngModel)]="model.name" name="name"
+                                            <input class="form-control" id="name" [(ngModel)]="modelInsert.name" name="name"
                                                 type="text">
                                         </div>
                                     </div>

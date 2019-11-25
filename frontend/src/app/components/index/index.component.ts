@@ -9,7 +9,11 @@ declare const $:any;
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
+  
+  public modelInsert: ITopic = {
+    budgetno: '',
+    name: ''
+  }
   public model: ITopic;
   public TopicItem: ITopic[] = [];
   AppURL = AppURL;
@@ -67,16 +71,27 @@ export class IndexComponent implements OnInit {
   }
 
   onInsertSubmit(){
-    this.model.balance = ''
+    this.modelInsert.balance = ''
     // console.log(this.model)
     this.budgetService
-    .postTopic(this.model)
+    .postTopic(this.modelInsert)
     .subscribe( result => {
       $('#insertListModal').modal('hide')
       this.ngOnInit()
+      this.onResetModel()
     },
     excep => alert(excep.error.message)
     )
   }
+
+    /** เคลียค่า modal form */
+    public onResetModel(){
+      // this.model.budgetno = ''
+      // this.model.name = ''
+      this.modelInsert = {
+        budgetno:'',
+        name: ''
+      }
+    }
 
 }
