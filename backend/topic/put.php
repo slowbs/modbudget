@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
     //     'message' => 'valid'
     // ]);
     //query นี้ยังไม่เวิค เพราะใน table list ตัวของ budgetno จะยังไม่เปลี่ยนตาม
-    $query = "UPDATE budget SET budgetno = ?, name = ? WHERE id = ?";
+    $query = "UPDATE budget SET budgetno = ?, name = ?, updated = NOW() WHERE id = ?";
     $stmt = mysqli_prepare($database, $query);
     mysqli_stmt_bind_param(
         $stmt,
