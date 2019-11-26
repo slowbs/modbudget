@@ -35,13 +35,15 @@ if(isset($data->projectno) && isset($data->name) && isset($data->budgetno) && is
     //     'message' => 'valid'
     // ]);
     // $balance = ($data->income - $data->outcome);
-    $query = "INSERT into project (activityno, name, budgetno, projectno) VALUES (?, ?, ?, ?)";
+    $query = "INSERT into project (activityno, name, budgetno, projectno, person, workgroup) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($database, $query);
-    mysqli_stmt_bind_param($stmt, 'ssss',
+    mysqli_stmt_bind_param($stmt, 'ssssss',
         $data->activityno,
         $data->name,
         $data->budgetno,
-        $data->projectno
+        $data->projectno,
+        $data->person,
+        $data->workgroup
     );
     mysqli_stmt_execute($stmt);
     $error_message = mysqli_error($database);

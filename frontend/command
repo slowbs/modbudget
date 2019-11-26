@@ -543,3 +543,65 @@ left JOIN
 (select projectno, budgetno, activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by projectno, activityno) as l on l.activityno = p.activityno and l.projectno = p.projectno)
 where p.budgetno = ? and p.activityno = ?
 group by p.id;
+
+//list join witn budgetno, activityno, projectno
+select l.id as id, l.bookno as bookno, l.datepick as datepick,
+    l.text as text, income, outcome, refund, note, workgroup, person
+    from list l
+    left join budget b on b.budgetno = l.budgetno
+    left join activity a on a.budgetno = l.budgetno and a.activityno = l.activityno
+    left join project p on p.budgetno = l.budgetno and p.activityno = l.activityno and p.projectno = l.projectno
+    where l.budgetno = 1111111 and l.activityno = 1111 and l.projectno = 111
+
+//list only balance
+set @csum = '0';
+select (@csum := @csum + income - outcome + refund) from list where budgetno = 1111111 and activityno = 1111 and projectno = 111
+
+//list join all
+set @csum = 0;
+select l.id as id, l.bookno as bookno, l.datepick as datepick,
+    l.text as text, income, outcome, refund, note, workgroup, person
+    from list l
+    left join budget b on b.budgetno = l.budgetno
+    left join activity a on a.budgetno = l.budgetno and a.activityno = l.activityno
+    left join project p on p.budgetno = l.budgetno and p.activityno = l.activityno and p.projectno = l.projectno
+    left join (select budgetno, activityno, projectno, (@csum := @csum + income - outcome + refund) from list where budgetno = 1111111 and activityno = 1111 and projectno = 111) as csum on csum.budgetno = l.budgetno and csum.activityno = l.activityno and csum.projectno = l.projectno
+    where l.budgetno = 1111111 and l.activityno = 1111 and l.projectno = 111
+
+//list only balance with describe
+set @csum = '0';
+select budgetno, activityno, projectno, (@csum := @csum + income - outcome + refund) as balance from list where budgetno = 1111111 and activityno = 1111 and projectno = 111
+
+//explore bug
+select * 
+    from list l
+    left join budget b on b.budgetno = l.budgetno
+    left join activity a on a.budgetno = l.budgetno and a.activityno = l.activityno
+    left join project p on p.budgetno = l.budgetno and p.activityno = l.activityno and p.projectno = l.projectno
+    where l.budgetno = 1111111 and l.activityno = 1111 and l.projectno = 111;
+
+set @csum = '0';
+select *, (@csum := @csum + income - outcome + refund) as balance from list where budgetno = 1111111 and activityno = 1111 and projectno = 111
+
+
+//list join all with balance
+set @csum = 0;
+select l.id as id, l.bookno as bookno, l.datepick as datepick,
+    l.text as text, income, outcome, refund, csum.balance, note, workgroup, person
+    from list l
+    left join budget b on b.budgetno = l.budgetno
+    left join activity a on a.budgetno = l.budgetno and a.activityno = l.activityno
+    left join project p on p.budgetno = l.budgetno and p.activityno = l.activityno and p.projectno = l.projectno
+    left join (select id, (@csum := @csum + income - outcome + refund) as balance from list where budgetno = 1111111 and activityno = 1111 and projectno = 111) as csum on csum.id = l.id
+    where l.budgetno = 1111111 and l.activityno = 1111 and l.projectno = 111
+
+//parameter
+set @csum = 0;
+select l.id as id, l.bookno as bookno, l.datepick as datepick,
+    l.text as text, income, outcome, refund, csum.balance, note, workgroup, person
+    from list l
+    left join budget b on b.budgetno = l.budgetno
+    left join activity a on a.budgetno = l.budgetno and a.activityno = l.activityno
+    left join project p on p.budgetno = l.budgetno and p.activityno = l.activityno and p.projectno = l.projectno
+    left join (select id, (@csum := @csum + income - outcome + refund) as balance from list where budgetno = ? and activityno = ? and projectno = ?) as csum on csum.id = l.id
+    where l.budgetno = ? and l.activityno = ? and l.projectno = ?

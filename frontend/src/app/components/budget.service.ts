@@ -59,8 +59,8 @@ export class BudgetService {
 
     /** List */
     // getLists(id: any){
-    getLists(budgetno: any, activityno: any) {
-        return this.httpClient.get<IList[]>(this.backendList, { params: { budgetno, activityno } });
+    getLists(budgetno: any, activityno: any, projectno: any) {
+        return this.httpClient.get<IList[]>(this.backendList, { params: { budgetno, activityno, projectno } });
     }
 
     postList(value: IList) {
@@ -131,13 +131,12 @@ export interface IList {
     // type: string;
     budgetno: string;
     activityno: string;
+    projectno: string;
     text: string;
     income?: string;
     outcome?: string;
     refund?: string;
     balance?: string;
-    person: string;
-    workgroup: string;
     note?: string;
     created?: string;
     updated?: string;
@@ -166,6 +165,8 @@ export interface IProject {
     budgetno: string;
     projectno: string;
     name: string;
+    person?: string;
+    workgroup?: string;
     balance?: string;
 }
 

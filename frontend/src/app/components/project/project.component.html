@@ -1,158 +1,173 @@
 <app-auth-content>
-        <div class="app-title">
-            <div>
-                <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
-                <p>A free and open source Bootstrap 4 admin template</p>
-            </div>
-            <ul class="app-breadcrumb breadcrumb">
-                <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-                <li class="breadcrumb-item"><a href="#">แดชบอร์ด</a></li>
-            </ul>
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+            <p>A free and open source Bootstrap 4 admin template</p>
         </div>
-        <div class="tile">
-            <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal">
-                    <button class="btn btn-success">เพิ่มรายการ</button></a></div>
-            <br>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>หมายเลขโครงการ</th>
-                            <th>ชื่อโครงการ</th>
-                            <th>จัดสรร</th>
-                            <th>เบิกจ่าย</th>
-                            <th>คงเหลือ</th>
-                            <th>Actions</th>
-                            <!-- <th>Username</th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-    
-                        <tr *ngFor="let item of ProjectItem">
-                            <td>{{ item.id }}</td>
-                            <td>{{ item.projectno }}</td>
-                            <td><a [routerLink]="['/', AppURL.List, item.budgetno, item.activityno, item.projectno ] ">{{ item.name }}</a>
-                            </td>
-                            <!-- <td><a [routerLink]="['/', AppURL.Activity, item.budgetno ] ">{{ item.name }}</a></td> -->
-                            <td>{{ item.income }}</td>
-                            <td>{{ item.outcome }}</td>
-                            <td>{{ item.balance }}</td>
-                            <td>
-                                <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->
-                                <a href="#editListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">
-                                    <i class="fa fa-pencil-square-o fa-lg" style="margin:5px" data-toggle="tooltip"
-                                        title="แก้ไข" aria-hidden="true"></i></a>
-                                <a href="#deleteListModal" class="delete" data-toggle="modal" (click)="onDeleteModal(item)">
-                                    <i class="fa fa-window-close fa-lg" style="margin:5px; color:#F44336"
-                                        data-toggle="tooltip" title="ลบ" aria-hidden="true"></i></a>
-                            </td>
-                            <!-- <td>{{ item.created }}</td> -->
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">แดชบอร์ด</a></li>
+        </ul>
+    </div>
+    <div class="tile">
+        <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal">
+                <button class="btn btn-success">เพิ่มรายการ</button></a></div>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>หมายเลขโครงการ</th>
+                        <th>ชื่อโครงการ</th>
+                        <th>จัดสรร</th>
+                        <th>เบิกจ่าย</th>
+                        <th>คงเหลือ</th>
+                        <th>ผู้รับผิดชอบ</th>
+                        <th>กลุ่มงาน</th>
+                        <th>Actions</th>
+                        <!-- <th>Username</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of ProjectItem">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.projectno }}</td>
+                        <td><a
+                                [routerLink]="['/', AppURL.List, item.budgetno, item.activityno, item.projectno ] ">{{ item.name }}</a>
+                        </td>
+                        <!-- <td><a [routerLink]="['/', AppURL.Activity, item.budgetno ] ">{{ item.name }}</a></td> -->
+                        <td>{{ item.income }}</td>
+                        <td>{{ item.outcome }}</td>
+                        <td>{{ item.balance }}</td>
+                        <td>{{ item.person }}</td>
+                        <td>{{ item.workgroup }}</td>
+                        <td>
+                            <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->
+                            <a href="#editListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">
+                                <i class="fa fa-pencil-square-o fa-lg" style="margin:5px" data-toggle="tooltip"
+                                    title="แก้ไข" aria-hidden="true"></i></a>
+                            <a href="#deleteListModal" class="delete" data-toggle="modal" (click)="onDeleteModal(item)">
+                                <i class="fa fa-window-close fa-lg" style="margin:5px; color:#F44336"
+                                    data-toggle="tooltip" title="ลบ" aria-hidden="true"></i></a>
+                        </td>
+                        <!-- <td>{{ item.created }}</td> -->
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    
-        <!-- Insert Modal HTML -->
-        <div id="insertListModal" class="modal fade">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <form (submit)="onInsertSubmit()" [noValidate]="false">
-                        <div class="modal-header">
-                            <h4 class="modal-title">เพิ่มรายการ</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row" id="sandbox-container">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for="projectno">หมายเลขโครงการ</label>
-                                                <input class="form-control" id="projectno" [(ngModel)]="modelInsert.projectno"
-                                                    name="projectno" type="text">
-                                            </div>
+    </div>
+
+    <!-- Insert Modal HTML -->
+    <div id="insertListModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form (submit)="onInsertSubmit()" [noValidate]="false">
+                    <div class="modal-header">
+                        <h4 class="modal-title">เพิ่มรายการ</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="sandbox-container">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="projectno">หมายเลขโครงการ</label>
+                                            <input class="form-control" id="projectno"
+                                                [(ngModel)]="modelInsert.projectno" name="projectno" type="text">
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for="name">ชื่อ</label>
-                                                <input class="form-control" id="name" [(ngModel)]="modelInsert.name"
-                                                    name="name" type="text">
-                                            </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="name">ชื่อ</label>
+                                            <input class="form-control" id="name" [(ngModel)]="modelInsert.name"
+                                                name="name" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="person">ผู้รับผิดชอบ</label>
+                                            <input class="form-control" id="person" [(ngModel)]="modelInsert.person"
+                                                name="person" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="workgroup">กลุ่มงาน</label>
+                                            <input class="form-control" id="workgroup" [(ngModel)]="modelInsert.workgroup"
+                                                name="workgroup" type="text">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success" value="Save">
-                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
             </div>
         </div>
-    
-        <!-- Edit Modal HTML -->
-        <div id="editListModal" class="modal fade">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <form (submit)="onUpdateSubmit()" [noValidate]="false">
-                        <div class="modal-header">
-                            <h4 class="modal-title">แก้ไขรายการ</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row" id="sandbox-container">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for="projectno">หมายเลขโครงการ</label>
-                                                <input class="form-control" id="projectno" [(ngModel)]="model.projectno"
-                                                    name="projectno" type="text">
-                                            </div>
+    </div>
+
+    <!-- Edit Modal HTML -->
+    <div id="editListModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form (submit)="onUpdateSubmit()" [noValidate]="false">
+                    <div class="modal-header">
+                        <h4 class="modal-title">แก้ไขรายการ</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="sandbox-container">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="projectno">หมายเลขโครงการ</label>
+                                            <input class="form-control" id="projectno" [(ngModel)]="model.projectno"
+                                                name="projectno" type="text">
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for="name">ชื่อ</label>
-                                                <input class="form-control" id="name" [(ngModel)]="model.name" name="name"
-                                                    type="text">
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="name">ชื่อ</label>
+                                            <input class="form-control" id="name" [(ngModel)]="model.name" name="name"
+                                                type="text">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-success" value="Save">
-                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" value="Save">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
             </div>
         </div>
-    
-        <!-- Delete Modal HTML -->
-        <div id="deleteListModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form (submit)="onDeleteSubmit()">
-                        <div class="modal-header">
-                            <h4 class="modal-title">ลบรายการ</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <p>ยืนยันที่จะลบรายการนี้ ?</p>
-                            <p class="text-warning"><small>การลบรายการต่อไปนี้จะไม่สามารถแก้ไขคืนกลับได้</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
-                        </div>
-                    </form>
-                </div>
+    </div>
+
+    <!-- Delete Modal HTML -->
+    <div id="deleteListModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form (submit)="onDeleteSubmit()">
+                    <div class="modal-header">
+                        <h4 class="modal-title">ลบรายการ</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>ยืนยันที่จะลบรายการนี้ ?</p>
+                        <p class="text-warning"><small>การลบรายการต่อไปนี้จะไม่สามารถแก้ไขคืนกลับได้</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    </div>
+                </form>
             </div>
         </div>
-    </app-auth-content>
+    </div>
+</app-auth-content>

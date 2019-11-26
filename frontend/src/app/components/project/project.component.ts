@@ -16,6 +16,8 @@ export class ProjectComponent implements OnInit {
     activityno: '',
     projectno: '',
     name: '',
+    person: '',
+    workgroup: '',
     balance: ''
   }
 
@@ -79,6 +81,8 @@ export class ProjectComponent implements OnInit {
   public onResetModel() {
     this.modelInsert.projectno = ''
     this.modelInsert.name = ''
+    this.modelInsert.person = ''
+    this.modelInsert.workgroup = ''
   }
 
   onUpdateSubmit() {

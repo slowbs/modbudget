@@ -23,11 +23,10 @@ export class FormComponent implements OnInit {
       datepick: new Date(),
       budgetno: '',
       activityno: '',
+      projectno: '',
       income: '0',
       outcome: '0',
       refund: '0',
-      person: '',
-      workgroup: '',
       note: ''
     };
 

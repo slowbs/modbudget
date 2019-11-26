@@ -14,8 +14,9 @@ export class ListComponent implements OnInit {
   AppURL = AppURL;
   public ListItem: IList[] = [];
   // public Id: IList = Object.assign({});
-  public Activityno: IActivity = Object.assign({});
-  public Budgetno: ITopic = Object.assign({});
+  public Activityno: IList = Object.assign({});
+  public Budgetno: IList = Object.assign({});
+  public Projectno: IList = Object.assign({});
 
   constructor(
     private budgetService: BudgetService,
@@ -26,12 +27,13 @@ export class ListComponent implements OnInit {
           // console.log(queryParam);
           this.Budgetno = queryParam.budgetno
           this.Activityno = queryParam.activityno
+          this.Projectno = queryParam.projectno
           // console.log(this.Id)
         })
   }
 
   ngOnInit() {
-    this.budgetService.getLists(this.Budgetno, this.Activityno)
+    this.budgetService.getLists(this.Budgetno, this.Activityno, this.Projectno)
     .subscribe(result => {
       this.ListItem = result
     })

@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['budgetno']) && isset($_GET['activityno'])){
-    $query = 'select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, sum(income - outcome) as balance from (
+    $query = 'select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, sum(income - outcome) as balance, person, workgroup from (
         (select * from project) as p
         left JOIN
         (select projectno, budgetno, activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by projectno, activityno) as l on l.activityno = p.activityno and l.projectno = p.projectno)
