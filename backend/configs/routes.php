@@ -17,6 +17,12 @@ $routes['/api/activity']['POST'] = 'activity/post.php';
 $routes['/api/activity']['PUT'] = 'activity/put.php';
 $routes['/api/activity']['DELETE'] = 'activity/delete.php';
 
+/** Project */
+$routes['/api/project']['GET'] = 'project/get.php';
+$routes['/api/project']['POST'] = 'project/post.php';
+$routes['/api/project']['PUT'] = 'project/put.php';
+$routes['/api/project']['DELETE'] = 'project/delete.php';
+
 /** Report */
 $routes['/api/report']['GET'] = 'report/get.php';
 

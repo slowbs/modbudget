@@ -1,19 +1,23 @@
 <?php
-if (isset($_GET['activityno'])) {
-    $query = 'select id, a.budgetno, a.activityno, name, income, outcome, sum(income - outcome) as balance from (
-        (select *  from activity) as a
-        left join
-        (select activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by activityno) as l on l.activityno = a.activityno)
-        where budgetno = ?
-        group by activityno';
+if(isset($_GET['budgetno']) && isset($_GET['activityno'])){
+    $query = 'select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, sum(income - outcome) as balance from (
+        (select * from project) as p
+        left JOIN
+        (select projectno, budgetno, activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by projectno, activityno) as l on l.activityno = p.activityno and l.projectno = p.projectno)
+        where p.budgetno = ? and p.activityno = ?
+        group by p.id;';
     $stmt = mysqli_prepare($database, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $_GET['activityno']);
+    mysqli_stmt_bind_param($stmt, 'ss',
+     $_GET['budgetno'],
+     $_GET['activityno']
+    );
     mysqli_stmt_execute($stmt);
     $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     //$result = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
     echo json_encode($result);
-} else {
-    $sql = 'SELECT * from activity';
+}
+ else {
+    $sql = 'SELECT * from project';
     $query = mysqli_query($database, $sql);
     $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
 

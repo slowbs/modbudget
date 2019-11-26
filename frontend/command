@@ -534,3 +534,12 @@ left join
  GROUP by projectno, activityno ) as sumoutcome2
 on sumoutcome2.projectno = p.projectno and sumoutcome2.activityno = p.activityno
 GROUP by p.projectno, p.activityno
+
+
+//project fix 1
+select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, sum(income - outcome) as balance from (
+(select * from project) as p
+left JOIN
+(select projectno, budgetno, activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by projectno, activityno) as l on l.activityno = p.activityno and l.projectno = p.projectno)
+where p.budgetno = ? and p.activityno = ?
+group by p.id;

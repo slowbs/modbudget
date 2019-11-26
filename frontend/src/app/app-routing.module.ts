@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: AppURL.FormTotal, component: FormtotalComponent },
   { path: AppURL.List, component: ListComponent },
   // {path: ContentURL.Content + '/:id', component: ContentComponent }
-  { path: AppURL.List + '/:budgetno' + '/:activityno', component: ListComponent },
+  { path: AppURL.List + '/:budgetno' + '/:activityno' + '/:projectno', component: ListComponent },
   { path: AppURL.FormActivity, component: FormactivityComponent },
   { path: AppURL.Activity, component: ActivityComponent },
   { path: AppURL.Activity + '/:budgetno', component: ActivityComponent },
