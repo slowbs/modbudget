@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetService, IReport } from '../budget.service';
+import { Router } from '@angular/router';
+import { AppURL } from '../../app.url'
 
 @Component({
   selector: 'app-report',
@@ -8,10 +10,12 @@ import { BudgetService, IReport } from '../budget.service';
 })
 export class ReportComponent implements OnInit {
 
+  AppURL = AppURL;
   public reportItem: IReport[] = [];
 
   constructor(
-    private budgetService: BudgetService
+    private budgetService: BudgetService,
+    private router: Router
   ) { }
 
   ngOnInit() {

@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: AppURL.Activity + '/:budgetno', component: ActivityComponent },
   { path: AppURL.Report, component: ReportComponent },
   { path: AppURL.Project, component: ProjectComponent },
-  { path: AppURL.Project + '/:budgetno' + '/:activityno', component: ProjectComponent}
+  { path: AppURL.Project + '/:budgetno' + '/:activityno', component: ProjectComponent},
+  { path: '**', redirectTo: AppURL.Index, pathMatch: 'full' }
 ];
 
 @NgModule({
