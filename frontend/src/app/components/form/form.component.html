@@ -19,22 +19,22 @@
                             <div class="form-group">
                                 <label class="col-form-label" for="projectname">ชื่อโครงการ</label>
                                 <input class="form-control" id="projectname" [(ngModel)]="model.projectname"
-                                    name="projectname" type="text" >
+                                    name="projectname" type="text">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="">ผู้รับผิดชอบ</label>
                                 <input class="form-control" id="person" [(ngModel)]="model.person" name="person"
-                                    type="text" >
+                                    type="text">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="workgroup">กลุ่มงาน</label>
-                                <input class="form-control" id="workgroup" [(ngModel)]="model.workgroup" name="workgroup"
-                                    type="text" >
+                                <input class="form-control" id="workgroup" [(ngModel)]="model.workgroup"
+                                    name="workgroup" type="text">
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label" for="bookno">เลขที่หนังสือ</label>
                                 <input class="form-control" id="bookno" [(ngModel)]="model.bookno" name="bookno"
-                                    type="text" >
+                                    type="text">
                             </div>
                             <!-- <div class="form-group">
                                 <label class="col-form-label" for="text">ชื่อรายการ</label>
@@ -48,26 +48,28 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group"  id="sandbox-container">
+                            <div class="form-group">
                                 <label class="col-form-label" for="date">วันที่</label>
                                 <div class="input-group date">
-                                    <input type="text" class="form-control" [(ngModel)]="model.datepick" name="datepick"
+                                    <!-- <input type="text" class="form-control" [(ngModel)]="model.datepick" name="datepick"
                                         id="datepick" ><span class="input-group-addon"><i
-                                            class="glyphicon glyphicon-th"></i></span>
+                                            class="glyphicon glyphicon-th"></i></span> -->
+                                            <p-calendar [(ngModel)]="model.datepick" name="datepick" dateFormat="yy-mm-dd"></p-calendar>
                                 </div>
                             </div>
                             <div class="form-group">
-                                    <label class="col-form-label" for="budgetno">เลือกประเภทงบ</label>
-                                <select class="form-control" id="budgetno" [(ngModel)]="model.budgetno"
-                                    name="budgetno" >
-                                    <option *ngFor="let item of ListBudget" [ngValue]="item.budgetno">{{ item.name }}</option>
+                                <label class="col-form-label" for="budgetno">เลือกประเภทงบ</label>
+                                <select class="form-control" id="budgetno" [(ngModel)]="model.budgetno" name="budgetno">
+                                    <option *ngFor="let item of ListBudget" [ngValue]="item.budgetno">{{ item.name }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                    <label class="col-form-label" for="activityno">เลือกประเภทกิจกรรม</label>
+                                <label class="col-form-label" for="activityno">เลือกประเภทกิจกรรม</label>
                                 <select class="form-control" id="activityno" [(ngModel)]="model.activityno"
-                                    name="activityno" >
-                                    <option *ngFor="let item of ListActivity" [ngValue]="item.activityno">{{ item.name }}</option>
+                                    name="activityno">
+                                    <option *ngFor="let item of ListActivity" [ngValue]="item.activityno">
+                                        {{ item.name }}</option>
                                 </select>
                             </div>
                             <div class="form-group">

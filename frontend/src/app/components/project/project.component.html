@@ -22,6 +22,7 @@
                         <th>ชื่อโครงการ</th>
                         <th>จัดสรร</th>
                         <th>เบิกจ่าย</th>
+                        <th>คืนเงิน</th>
                         <th>คงเหลือ</th>
                         <th>ผู้รับผิดชอบ</th>
                         <th>กลุ่มงาน</th>
@@ -38,9 +39,16 @@
                                 [routerLink]="['/', AppURL.List, item.budgetno, item.activityno, item.projectno ] ">{{ item.name }}</a>
                         </td>
                         <!-- <td><a [routerLink]="['/', AppURL.Activity, item.budgetno ] ">{{ item.name }}</a></td> -->
-                        <td>{{ item.income }}</td>
-                        <td>{{ item.outcome }}</td>
-                        <td>{{ item.balance }}</td>
+                        <td>
+                            <font color="green"><b>{{ item.income }}</b></font>
+                        </td>
+                        <td>
+                            <font color="red"><b>{{ item.outcome }}</b></font>
+                        </td>
+                        <td>
+                            <font color="blue"><b>{{ item.refund }}</b></font>
+                        </td>
+                        <td><b>{{ item.balance }}</b></td>
                         <td>{{ item.person }}</td>
                         <td>{{ item.workgroup }}</td>
                         <td>
@@ -128,12 +136,22 @@
                                             <input class="form-control" id="projectno" [(ngModel)]="model.projectno"
                                                 name="projectno" type="text">
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="col-form-label" for="name">ชื่อ</label>
                                             <input class="form-control" id="name" [(ngModel)]="model.name" name="name"
                                                 type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="person">ผู้รับผิดชอบ</label>
+                                            <input class="form-control" id="person" [(ngModel)]="model.person"
+                                                name="person" type="text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="workgroup">กลุ่มงาน</label>
+                                            <input class="form-control" id="workgroup" [(ngModel)]="model.workgroup"
+                                                name="workgroup" type="text">
                                         </div>
                                     </div>
                                 </div>

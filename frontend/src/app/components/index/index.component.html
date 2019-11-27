@@ -22,6 +22,7 @@
                         <th>ชื่องบ</th>
                         <th>จัดสรร</th>
                         <th>เบิกจ่าย</th>
+                        <th>คืนเงิน</th>
                         <th>คงเหลือ</th>
                         <th>Action</th>
                     </tr>
@@ -32,9 +33,16 @@
                         <td>{{ item.budgetno }}</td>
                         <!-- <td><a [routerLink]="['/', AppURL.List, item.id ] ">{{ item.name }}</a></td> -->
                         <td><a [routerLink]="['/', AppURL.Activity, item.budgetno ] ">{{ item.name }}</a></td>
-                        <td>{{ item.income }}</td>
-                        <td>{{ item.outcome }}</td>
-                        <td>{{ item.balance }}</td>
+                        <td>
+                            <font color="green"><b>{{ item.income }}</b></font>
+                        </td>
+                        <td>
+                            <font color="red"><b>{{ item.outcome }}</b></font>
+                        </td>
+                        <td>
+                            <font color="blue"><b>{{ item.refund }}</b></font>
+                        </td>
+                        <td><b>{{ item.balance }}</b></td>
                         <td>
                             <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->
                             <a href="#editListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">

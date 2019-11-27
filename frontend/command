@@ -537,12 +537,12 @@ GROUP by p.projectno, p.activityno
 
 
 //project fix 1
-select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, sum(income - outcome) as balance from (
+select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, sum(income - outcome + refund) as balance, person, workgroup from (
 (select * from project) as p
 left JOIN
-(select projectno, budgetno, activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by projectno, activityno) as l on l.activityno = p.activityno and l.projectno = p.projectno)
+(select projectno, budgetno, activityno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund from list GROUP by projectno, activityno) as l on l.activityno = p.activityno and l.projectno = p.projectno)
 where p.budgetno = ? and p.activityno = ?
-group by p.id;
+group by p.id
 
 //list join witn budgetno, activityno, projectno
 select l.id as id, l.bookno as bookno, l.datepick as datepick,

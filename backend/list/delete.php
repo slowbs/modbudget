@@ -31,9 +31,6 @@ if (isset($_GET['id'])) {
         // echo json_encode([
         //     'message' => 'DELETE METHOD', 'id' => $_GET['id']
         // ]);
-        mysqli_query($database, "select total into @csum from total where id = $data->type;");
-        mysqli_query($database, "UPDATE list set balance = (@csum := @csum + income - outcome + refund) where type = $data->type");
-        mysqli_query($database, "UPDATE total set balance = @csum where id = $data->type");
         $error_message = mysqli_error($database);
 
         /** เช็ค error */

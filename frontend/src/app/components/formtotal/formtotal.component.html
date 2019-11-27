@@ -1,41 +1,9 @@
 <app-auth-content>
-    <div class="app-title">
-        <div>
-            <h1><i class="fa fa-edit"></i> Form Components</h1>
-            <p>Bootstrap default form components</p>
-        </div>
-        <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Forms</li>
-            <li class="breadcrumb-item"><a href="#">Form Components</a></li>
-        </ul>
-    </div>
-    <div class="row" id="sandbox-container">
-        <div class="col-md-12">
-            <div class="tile">
-                <form (submit)="onSubmit()" [noValidate]="false">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="budgetno">หมายเลขงบ</label>
-                                <input class="form-control" id="budgetno" [(ngModel)]="model.budgetno" name="budgetno"
-                                    type="text">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="col-form-label" for="name">ชื่อ</label>
-                                <input class="form-control" id="name" [(ngModel)]="model.name" name="name" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div align='center'>
-                        <input type="submit" class="btn btn-success" value="ตกลง">
-                        <a [routerLink]="['/', AppURL.Index]"><button class="btn btn-danger btn-spacing">
-                                ยกเลิก</button></a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+        <form (submit)="onUpdateSubmit()">
+                <div class="ui-g-12 ui-md-4">
+                        <h3>Basic</h3>
+                        <p-calendar [(ngModel)]="value" name="value"></p-calendar>
+                </div>
+                <input type="submit" class="btn btn-success" value="Save">
+        </form>
 </app-auth-content>

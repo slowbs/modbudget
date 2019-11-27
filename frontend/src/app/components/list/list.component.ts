@@ -11,7 +11,7 @@ declare const $: any;
 })
 export class ListComponent implements OnInit {
 
-    public modelInsert:IList = {
+    public modelInsert: IList = {
         bookno: '',
         text: '',
         datepick: new Date(),
@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
         outcome: '0',
         refund: '0',
         note: ''
-      };
+    };
 
     AppURL = AppURL;
     public model: IList;
@@ -42,6 +42,9 @@ export class ListComponent implements OnInit {
             this.Budgetno = queryParam.budgetno
             this.Activityno = queryParam.activityno
             this.Projectno = queryParam.projectno
+            this.modelInsert.budgetno = queryParam.budgetno
+            this.modelInsert.activityno = queryParam.activityno
+            this.modelInsert.projectno = queryParam.projectno
             // console.log(this.Id)
         })
         this.model = this.budgetService.updateModelIList
@@ -52,7 +55,7 @@ export class ListComponent implements OnInit {
             .subscribe(result => {
                 this.ListItem = result
             })
-        this.datePicker()
+        // this.datePicker()
     }
 
     public onEditModal(item: IList) {
@@ -65,48 +68,65 @@ export class ListComponent implements OnInit {
         Object.assign(this.budgetService.deleteModelIList, item);
     }
 
-    onInsertSubmit(){
-        console.log(this.modelInsert)
+    onInsertSubmit() {
+        // console.log(this.modelInsert)
+        this.budgetService
+            .postList(this.modelInsert)
+            .subscribe(result => {
+                $('#insertListModal').modal('hide')
+                this.ngOnInit()        
+                this.onResetModel()
+            })
     }
 
     onUpdateSubmit() {
         // this.modelInsert.datepick = new Date()
-        console.log(this.model)
-        // this.budgetService
-        //     .putList(this.model.id, this.model)
-        //     .subscribe(result => {
-        //         // console.log(result)
-        //         $('#editListModal').modal('hide');
-        //         // this.router.navigate(['/', AppURL.List, 1])
-        //         // this.router.navigate(['/', AppURL.Index])
-        //         this.ngOnInit()
-        //     },
-        //         excep => alert(excep.error.message)
-        //     )
+        // console.log(this.model)
+        this.budgetService
+            .putList(this.model.id, this.model)
+            .subscribe(result => {
+                // console.log(result)
+                $('#editListModal').modal('hide');
+                // this.router.navigate(['/', AppURL.List, 1])
+                // this.router.navigate(['/', AppURL.Index])
+                this.ngOnInit()
+            },
+                excep => alert(excep.error.message)
+            )
+    }
+
+    /** เคลียค่า modal form */
+    public onResetModel() {
+        this.modelInsert.bookno = '',
+        this.modelInsert.datepick = new Date(),
+        this.modelInsert.text = '',
+        this.modelInsert.income = '0',
+        this.modelInsert.outcome = '0',
+        this.modelInsert.refund = '0'
     }
 
     public onDelSubmit() {
-        console.log(this.budgetService.deleteModelIList)
-        // this.budgetService
-        // .deleteItem(this.budgetService.deleteModel.id)
-        // .subscribe(result => {
-        //   this.ngOnInit();
-        //   $('#deleteListModal').modal('hide');
-        // },
-        // excep => alert(excep.error.message))
+        // console.log(this.budgetService.deleteModelIList)
+        this.budgetService
+        .deleteItem(this.budgetService.deleteModelIList.id)
+        .subscribe(result => {
+          this.ngOnInit();
+          $('#deleteListModal').modal('hide');
+        },
+        excep => alert(excep.error.message))
     }
 
-    public datePicker() {
-        $('#sandbox-container .input-group.date').datepicker({
-            format: "dd/mm/yy",
-            todayBtn: "linked",
-            language: "th",
-            autoclose: true,
-            todayHighlight: true
-        });
-    }
+    // public datePicker() {
+    //     $('#sandbox-container .input-group.date').datepicker({
+    //         format: "dd/mm/yy",
+    //         todayBtn: "linked",
+    //         language: "th",
+    //         autoclose: true,
+    //         todayHighlight: true
+    //     });
+    // }
 
-    public updateCalcs(){
+    public updateCalcs() {
         console.log()
     }
 

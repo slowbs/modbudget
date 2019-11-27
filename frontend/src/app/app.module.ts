@@ -16,6 +16,9 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { ReportComponent } from './components/report/report.component';
 import { ProjectComponent } from './components/project/project.component';
 
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,10 @@ import { ProjectComponent } from './components/project/project.component';
     AppRoutingModule,
     SharedsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CalendarModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

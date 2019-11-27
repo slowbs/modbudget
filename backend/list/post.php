@@ -3,7 +3,7 @@
 $data = json_decode(file_get_contents('php://input'));
 
 /** Validation */
-if(isset($data->bookno) && isset($data->text) && isset($data->projectno) && isset($data->name) && isset($data->budgetno) && isset($data->activityno))
+if(isset($data->bookno) && isset($data->text) && isset($data->projectno) && isset($data->budgetno) && isset($data->activityno))
 {
 
     // /** ดึงค่า balance จาก total */

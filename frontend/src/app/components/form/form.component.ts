@@ -37,7 +37,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
    
-    this.datePicker();
+    // this.datePicker();
     this.budgetFormList();
     this.activityFormList();
 
@@ -70,14 +70,14 @@ export class FormComponent implements OnInit {
     })
   }
 
-  public datePicker(){
-    $('#sandbox-container .input-group.date').datepicker({
-      format: "dd/mm/yy",
-      todayBtn: "linked",
-      language: "th",
-      autoclose: true,
-      todayHighlight: true
-  });
-  }
+  // public datePicker(){
+  //   $('#sandbox-container .input-group.date').datepicker({
+  //     format: "dd/mm/yy",
+  //     todayBtn: "linked",
+  //     language: "th",
+  //     autoclose: true,
+  //     todayHighlight: true
+  // });
+  // }
 
 }
