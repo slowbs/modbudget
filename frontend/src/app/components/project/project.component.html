@@ -6,7 +6,8 @@
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item"><a href="#">แดชบอร์ด</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/', AppURL.Index]">แดชบอร์ด</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/', AppURL.Activity, Budgetno ]">กิจกรรม</a></li>
         </ul>
     </div>
     <div class="tile">
