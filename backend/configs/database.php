@@ -19,7 +19,7 @@ if( PRODUCTION )
 
 
 /** Test in 5.114 */
-if( TESTLAN )
+elseif( TESTLAN )
 {
     $host = '192.168.5.114';
     $user = 'slowbs';
