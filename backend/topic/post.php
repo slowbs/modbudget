@@ -28,7 +28,7 @@ if(isset($data->budgetno) && isset($data->name) && isset($data->balance))
     // echo json_encode([
     //     'message' => 'valid'
     // ]);
-    $balance = ($data->income - $data->outcome);
+    // $balance = ($data->income - $data->outcome);
     $query = "INSERT into budget (budgetno, name, total, balance) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($database, $query);
     mysqli_stmt_bind_param($stmt, 'ssss',

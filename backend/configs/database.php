@@ -8,18 +8,21 @@ if (PRODUCTION) {
     $user = 'hdc';
     $password = 'hdcnst';
     $dbname = 'modbudget';
+    $route  = explode('?', str_replace('/modbudget/backend', '', $_SERVER['REQUEST_URI']))[0];
 } elseif (TESTLAN) {
     /** Development */
     $host = '192.168.5.104';
     $user = 'slowbs';
     $password = 'sodsongig4';
     $dbname = 'modbudget';
+    $route  = explode('?', str_replace('/modbudget/backend', '', $_SERVER['REQUEST_URI']))[0];
 } else {
     /** Development */
     $host = 'localhost';
     $user = 'slowbs';
     $password = 'sodsongig4';
     $dbname = 'modbudget';
+    $route  = explode('?', str_replace('/backend', '', $_SERVER['REQUEST_URI']))[0];
 }
 
 
