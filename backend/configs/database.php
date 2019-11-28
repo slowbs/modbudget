@@ -18,6 +18,16 @@ if( PRODUCTION )
 }
 
 
+/** Test in 5.114 */
+if( TESTLAN )
+{
+    $host = '192.168.5.114';
+    $user = 'slowbs';
+    $password = 'sodsongig4';
+    $dbname = 'modbudget';
+}
+
+
 $database = mysqli_connect($host,$user,$password,$dbname);
 mysqli_set_charset($database,"utf8");
 
