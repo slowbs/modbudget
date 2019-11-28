@@ -18,10 +18,10 @@ if( PRODUCTION )
 }
 
 
-/** Test in 5.114 */
+/** Test in 5.104 */
 elseif( TESTLAN )
 {
-    $host = '192.168.5.114';
+    $host = '192.168.5.104';
     $user = 'slowbs';
     $password = 'sodsongig4';
     $dbname = 'modbudget';
