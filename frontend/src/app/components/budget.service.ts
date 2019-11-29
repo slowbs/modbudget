@@ -29,6 +29,7 @@ export class BudgetService {
     private backendActivity: string = this.backendAPI + '/activity';
     private backendReport: string = this.backendAPI + '/report';
     private backendProject: string = this.backendAPI + '/project';
+    private backendWorkgroup: string = this.backendAPI + '/workgroup';
 
     constructor(
         private httpClient: HttpClient
@@ -123,6 +124,11 @@ export class BudgetService {
     getReport() {
         return this.httpClient.get<IReport[]>(this.backendReport);
     }
+
+    /** Workgroup */
+    getWorkgroup(){
+        return this.httpClient.get<IWorkgroup[]>(this.backendWorkgroup)
+    }
 }
 
 export interface IList {
@@ -198,4 +204,9 @@ export interface IReport {
     outcome: string;
     per2: string;
     totalbalance: string;
+}
+
+export interface IWorkgroup{
+    id: string;
+    name: string;
 }

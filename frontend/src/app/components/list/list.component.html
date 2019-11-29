@@ -12,6 +12,24 @@
         </ul>
     </div>
     <div class="tile">
+        <div class="row" *ngFor="let item of header">
+            <div class="col-lg-6">
+                <div class="bs-component">
+                    <h3>โครงการ : {{ item.name }} </h3>
+                    <h3>รหัสกิจกรรม : {{ item.activityno }}</h3>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bs-component">
+                    <h3>ผู้รับผิดชอบโครงการ : {{ item.person }} </h3>
+                    <h3>กลุ่มงาน : {{ item.workgroup }}</h3>
+                </div>
+            </div>
+        </div>
+        <!-- <div align="left" *ngFor="let item of header">
+            <h3> โครงการ : {{ item.name }} รหัสกิจกรรม : {{ item.activityno }}</h3>
+            <h3> ผู้รับผิดชอบโครงการ : {{ item.person }} กลุ่มงาน : {{ item.workgroup }}</h3>
+        </div> -->
         <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal">
                 <button class="btn btn-success">เพิ่มรายการ</button></a></div>
         <br>
@@ -104,7 +122,8 @@
                                         <div class="form-group">
                                             <label class="col-form-label" for="date">วันที่</label>
                                             <div class="input-group date">
-                                                <p-calendar [(ngModel)]="modelInsert.datepick" name="datepick" dateFormat="yy-mm-dd"></p-calendar>
+                                                <p-calendar [(ngModel)]="modelInsert.datepick" name="datepick"
+                                                    dateFormat="yy-mm-dd"></p-calendar>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -172,7 +191,8 @@
                                             <div class="input-group date">
                                                 <!-- <input type="text" class="form-control" [(ngModel)]="model.datepick"
                                                     name="datepick" id="datepick" required autocomplete="off"> -->
-                                                <p-calendar [(ngModel)]="model.datepick" name="datepick" dateFormat="yy-mm-dd"></p-calendar>
+                                                <p-calendar [(ngModel)]="model.datepick" name="datepick"
+                                                    dateFormat="yy-mm-dd"></p-calendar>
                                             </div>
                                         </div>
                                         <div class="form-group">

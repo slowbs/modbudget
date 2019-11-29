@@ -26,6 +26,9 @@ $routes['/api/project']['DELETE'] = 'project/delete.php';
 /** Report */
 $routes['/api/report']['GET'] = 'report/get.php';
 
+/** Workgroup */
+$routes['/api/workgroup']['GET'] = 'workgroup/get.php';
+
 
 /** เอาไว้เทส session หน้า login ของ php */
 //$routes['/api/login']['GET'] = 'account/login.php';

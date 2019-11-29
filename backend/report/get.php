@@ -63,7 +63,7 @@
 // GROUP by a.activityno";
 $sql = "select text, p.budgetno, p.activityno, pj.name, income, sum_income1, m_10, m_11, m_12, m_1, m_2, m_3, sum_outcome1, sum(sum_income1 - sum_outcome1) as balance1, round(sum((sum_outcome1 * 100)/sum_income1), 2) as per1,
 sum_income2, m_4, m_5, m_6, m_7, m_8, m_9, outcome, round((sum(outcome * 100)/income), 2) as per2,
-sum(income - outcome) as totalbalance
+sum(income - outcome) as totalbalance, person, workgroup
 from
 (select text, budgetno, activityno, projectno, sum(income) as income, sum(outcome) as outcome from list GROUP by projectno, activityno) as p
 left JOIN

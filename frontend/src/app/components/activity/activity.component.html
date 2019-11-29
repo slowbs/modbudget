@@ -11,6 +11,13 @@
         </ul>
     </div>
     <div class="tile">
+        <div class="row" *ngFor="let item of Header">
+            <div class="col-lg-6">
+                <div class="bs-component">
+                    <h3>รหัสงบประมาณ : {{ item.budgetno }} </h3>
+                </div>
+            </div>
+        </div>
         <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal">
                 <button class="btn btn-success">เพิ่มรายการ</button></a></div>
         <br>

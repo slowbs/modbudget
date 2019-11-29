@@ -11,6 +11,8 @@ declare const $: any;
 })
 export class ActivityComponent implements OnInit {
 
+  private Header:[]
+
   public modelInsert: IActivity = {
     budgetno: '',
     name: '',
@@ -43,7 +45,8 @@ export class ActivityComponent implements OnInit {
     this.budgetService.getActivity(this.Budgetno)
       .subscribe(result => {
         // console.log(result)
-        this.ActivityItem = result
+        this.ActivityItem = result['result']
+        this.Header = result['result2']
       })
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BudgetService, IList, IActivity, ITopic } from '../budget.service';
+import { BudgetService, IList } from '../budget.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppURL } from '../../app.url';
 declare const $: any;
@@ -10,6 +10,8 @@ declare const $: any;
     styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+
+    private header: [];
 
     public modelInsert: IList = {
         bookno: '',
@@ -53,7 +55,9 @@ export class ListComponent implements OnInit {
     ngOnInit() {
         this.budgetService.getLists(this.Budgetno, this.Activityno, this.Projectno)
             .subscribe(result => {
-                this.ListItem = result
+                this.ListItem = result['result']
+                this.header = result['result2']
+                console.log(this.header)
             })
         // this.datePicker()
     }
@@ -74,7 +78,7 @@ export class ListComponent implements OnInit {
             .postList(this.modelInsert)
             .subscribe(result => {
                 $('#insertListModal').modal('hide')
-                this.ngOnInit()        
+                this.ngOnInit()
                 this.onResetModel()
             })
     }
@@ -98,22 +102,22 @@ export class ListComponent implements OnInit {
     /** เคลียค่า modal form */
     public onResetModel() {
         this.modelInsert.bookno = '',
-        this.modelInsert.datepick = new Date(),
-        this.modelInsert.text = '',
-        this.modelInsert.income = '',
-        this.modelInsert.outcome = '',
-        this.modelInsert.refund = ''
+            this.modelInsert.datepick = new Date(),
+            this.modelInsert.text = '',
+            this.modelInsert.income = '',
+            this.modelInsert.outcome = '',
+            this.modelInsert.refund = ''
     }
 
     public onDelSubmit() {
         // console.log(this.budgetService.deleteModelIList)
         this.budgetService
-        .deleteItem(this.budgetService.deleteModelIList.id)
-        .subscribe(result => {
-          this.ngOnInit();
-          $('#deleteListModal').modal('hide');
-        },
-        excep => alert(excep.error.message))
+            .deleteItem(this.budgetService.deleteModelIList.id)
+            .subscribe(result => {
+                this.ngOnInit();
+                $('#deleteListModal').modal('hide');
+            },
+                excep => alert(excep.error.message))
     }
 
     // public datePicker() {
@@ -126,9 +130,6 @@ export class ListComponent implements OnInit {
     //     });
     // }
 
-    public updateCalcs() {
-        console.log()
-    }
 
 
 }

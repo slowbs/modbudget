@@ -48,5 +48,23 @@ if (isset($_GET['budgetno']) && isset($_GET['activityno']) && isset($_GET['proje
     mysqli_stmt_execute($stmt);
     $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     //$result = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
-    echo json_encode($result);
+
+    /** ดึง header */
+    $query = 'select * from project where budgetno = ? and activityno = ? and projectno = ?';
+    $stmt = mysqli_prepare($database, $query);
+    mysqli_stmt_bind_param(
+        $stmt,
+        'sss',
+        $_GET['budgetno'],
+        $_GET['activityno'],
+        $_GET['projectno'],
+    );
+    mysqli_stmt_execute($stmt);
+    $result2 = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+    /** ส่งค่าไป frontend */
+    echo json_encode([
+        'result' => $result,
+        'result2' => $result2
+    ]);
 }
