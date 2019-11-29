@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppURL } from '../../../app.url'
 
 @Component({
   selector: 'app-auth-navbar',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthNavbarComponent implements OnInit {
 
-  constructor() { }
+  AppURL = AppURL;
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
