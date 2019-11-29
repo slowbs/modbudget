@@ -18,7 +18,8 @@ export class BudgetService {
     public deleteModelIProject: IProject = Object.assign({});
 
     private backendAPI: string = environment.production ?
-        'http://61.19.202.217/modbudget/backend/api' :
+        // 'http://61.19.202.217/modbudget/backend/api' :
+        'http://192.168.5.104/modbudget/backend/api' :
         `${backendURL}/api/`;
 
     // private backendTopic: string = 'http://61.19.202.217/modbudget/backend/api/topic';
