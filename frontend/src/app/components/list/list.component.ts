@@ -100,9 +100,9 @@ export class ListComponent implements OnInit {
         this.modelInsert.bookno = '',
         this.modelInsert.datepick = new Date(),
         this.modelInsert.text = '',
-        this.modelInsert.income = '0',
-        this.modelInsert.outcome = '0',
-        this.modelInsert.refund = '0'
+        this.modelInsert.income = '',
+        this.modelInsert.outcome = '',
+        this.modelInsert.refund = ''
     }
 
     public onDelSubmit() {
