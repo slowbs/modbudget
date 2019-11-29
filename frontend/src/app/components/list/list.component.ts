@@ -18,9 +18,9 @@ export class ListComponent implements OnInit {
         budgetno: '',
         activityno: '',
         projectno: '',
-        income: '0',
-        outcome: '0',
-        refund: '0',
+        income: '',
+        outcome: '',
+        refund: '',
         note: ''
     };
 
