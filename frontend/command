@@ -679,3 +679,11 @@ select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, refund,
         where person like '%%?%%'
         group by p.id
 
+//reportgroup
+select id, w.name, count(pj.projectno), income, outcome, refund, sum(income - outcome + refund) as balance from (
+    (select *  from workgroup) as w
+    left JOIN
+    (select workgroup, projectno from project) as pj on pj.workgroup = w.name
+    left JOIN
+    (select projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund from list GROUP by projectno) as l on l.projectno = pj.projectno)
+    group by w.name order by id

@@ -7,7 +7,9 @@ export const AppURL = {
     Activity: 'activity',
     Report: 'report',
     Project: 'project',
-    Search: 'search'
+    Search: 'search',
+    Reportgroup: 'reportgroup',
+    Workgroup: 'workgroup'
 }
 
 export const backendURL: string = '/backend';

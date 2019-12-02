@@ -10,6 +10,8 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { ReportComponent } from './components/report/report.component';
 import { ProjectComponent } from './components/project/project.component';
 import { SearchComponent } from './components/search/search.component';
+import { ReportgroupComponent } from './components/reportgroup/reportgroup.component';
+import { WorkgroupComponent } from './components/workgroup/workgroup.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,9 @@ const routes: Routes = [
   { path: AppURL.Project, component: ProjectComponent },
   { path: AppURL.Project + '/:budgetno' + '/:activityno', component: ProjectComponent},
   { path: AppURL.Search, component: SearchComponent },
+  { path: AppURL.Reportgroup, component: ReportgroupComponent },
+  { path: AppURL.Reportgroup + '/:workgroup', component: ReportgroupComponent},
+  { path: AppURL.Workgroup, component: WorkgroupComponent },
   { path: '**', redirectTo: AppURL.Index, pathMatch: 'full' }
   
 ];
