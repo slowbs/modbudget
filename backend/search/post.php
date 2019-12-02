@@ -2,7 +2,8 @@
 
 $data = json_decode(file_get_contents('php://input'));
 
-if (isset($data->project) && ($data->project !=null)) {
+// if (isset($data->project) && ($data->project !=null)) {
+if (isset($data->project)) {
     $data->project = "%$data->project%";
     // $query = 'SELECT * FROM `project` WHERE name like ?';
     $query = 'select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, refund, sum(income - outcome + refund) as balance, person, workgroup from (
@@ -17,8 +18,8 @@ if (isset($data->project) && ($data->project !=null)) {
     $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     //$result = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
     echo json_encode($result);
-
-} elseif (isset($data->person) && ($data->person != null)) {
+    // } elseif (isset($data->person) && ($data->person != null)) {
+} elseif (isset($data->person)) {
     $data->person = "%$data->person%";
     // $query = 'SELECT * FROM `project` WHERE person like ?';
     $query = 'select id, p.budgetno, p.activityno, p.projectno, name, income, outcome, refund, sum(income - outcome + refund) as balance, person, workgroup from (

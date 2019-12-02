@@ -135,6 +135,10 @@ export class BudgetService {
     postSearch(value: any){
         return this.httpClient.post<IProject[]>(this.backendSearch, value)
     }
+
+    getSearch() {
+        return this.httpClient.get<IProject[]>(this.backendSearch);
+    }
 }
 
 export interface IList {
