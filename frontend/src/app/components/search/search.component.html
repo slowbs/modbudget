@@ -13,7 +13,7 @@
         <div class="row" id="sandbox-container">
             <div class="col-md-12">
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="col-form-label" for="budgetno">ค้นหาจากโครงการ</label>
@@ -24,7 +24,7 @@
                             <label class="col-form-label" for="name">ค้นหาจากผู้รับผิดชอบ</label>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row">
                     <div class="col-lg-6">
@@ -32,7 +32,7 @@
                             <div class="row">
                                 <div class="col-lg-10">
                                     <input class="form-control" id="project" [(ngModel)]="modelproject.project"
-                                        name="project" type="text">
+                                        name="project" type="text" placeholder="ค้นหาจากชื่อโครงการ">
                                 </div>
                                 <div class="col-lg-2">
                                     <button type="submit" class="btn btn-primary mb-2">ค้นหา</button>
@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-lg-10">
                                     <input class="form-control" id="perosn" [(ngModel)]="modelperson.person"
-                                        name="person" type="text">
+                                        name="person" type="text" placeholder="ค้นหาจากชื่อผู้รับผิดชอบ">
                                 </div>
                                 <div class="col-lg-2">
                                     <button type="submit" class="btn btn-primary mb-2">ค้นหา</button>
@@ -54,6 +54,60 @@
                         </form>
                     </div>
                 </div>
+            </div>
+            <div class="table-responsive">
+                <br>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>หมายเลขโครงการ</th>
+                            <th>ชื่อโครงการ</th>
+                            <th>จัดสรร</th>
+                            <th>เบิกจ่าย</th>
+                            <th>คืนเงิน</th>
+                            <th>คงเหลือ</th>
+                            <th>ผู้รับผิดชอบ</th>
+                            <th>กลุ่มงาน</th>
+                            <th>Actions</th>
+                            <!-- <th>Username</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let item of ProjectItem; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ item.projectno }}</td>
+                            <td><a
+                                    [routerLink]="['/', AppURL.List, item.budgetno, item.activityno, item.projectno ] ">{{ item.name }}</a>
+                            </td>
+                            <!-- <td><a [routerLink]="['/', AppURL.Activity, item.budgetno ] ">{{ item.name }}</a></td> -->
+                            <td>
+                                <font color="green"><b>{{ item.income }}</b></font>
+                            </td>
+                            <td>
+                                <font color="red"><b>{{ item.outcome }}</b></font>
+                            </td>
+                            <td>
+                                <font color="blue"><b>{{ item.refund }}</b></font>
+                            </td>
+                            <td><b>{{ item.balance }}</b></td>
+                            <td>{{ item.person }}</td>
+                            <td>{{ item.workgroup }}</td>
+                            <td>
+                                <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->
+                                <a href="#editListModal" class="edit" data-toggle="modal" (click)="onEditModal(item)">
+                                    <i class="fa fa-pencil-square-o fa-lg" style="margin:5px" data-toggle="tooltip"
+                                        title="แก้ไข" aria-hidden="true"></i></a>
+                                <a href="#deleteListModal" class="delete" data-toggle="modal"
+                                    (click)="onDeleteModal(item)">
+                                    <i class="fa fa-window-close fa-lg" style="margin:5px; color:#F44336"
+                                        data-toggle="tooltip" title="ลบ" aria-hidden="true"></i></a>
+                            </td>
+                            <!-- <td>{{ item.created }}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

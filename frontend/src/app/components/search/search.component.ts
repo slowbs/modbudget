@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
     project: ''
   }
 
-  private ListProject: any=[];
+  public ProjectItem: IProject[] = [];
 
   constructor(
     private budgetService: BudgetService
@@ -33,8 +33,8 @@ export class SearchComponent implements OnInit {
     console.log(this.modelproject)
     this.budgetService.postSearch(this.modelproject)
     .subscribe(result => {
-      this.ListProject = result
-      console.log(this.ListProject)
+      this.ProjectItem= result
+      console.log(this.ProjectItem)
     },
     excep => alert(excep.error.message))
   }
@@ -43,8 +43,8 @@ export class SearchComponent implements OnInit {
     console.log(this.modelperson)
     this.budgetService.postSearch(this.modelperson)
     .subscribe(result => {
-      this.ListProject = result
-      console.log(this.ListProject)
+      this.ProjectItem = result
+      console.log(this.ProjectItem)
     },
     excep => alert(excep.error.message))
   }

@@ -133,7 +133,7 @@ export class BudgetService {
 
     /** Search */
     postSearch(value: any){
-        return this.httpClient.post(this.backendSearch, value)
+        return this.httpClient.post<IProject[]>(this.backendSearch, value)
     }
 }
 
