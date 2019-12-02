@@ -18,6 +18,7 @@ import { ProjectComponent } from './components/project/project.component';
 
 import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FormactivityComponent,
     ActivityComponent,
     ReportComponent,
-    ProjectComponent
+    ProjectComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

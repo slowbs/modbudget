@@ -29,6 +29,9 @@ $routes['/api/report']['GET'] = 'report/get.php';
 /** Workgroup */
 $routes['/api/workgroup']['GET'] = 'workgroup/get.php';
 
+/** Search */
+$routes['/api/search']['GET'] = 'search/get.php';
+$routes['/api/search']['POST'] = 'search/post.php';
 
 /** เอาไว้เทส session หน้า login ของ php */
 //$routes['/api/login']['GET'] = 'account/login.php';

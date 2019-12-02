@@ -30,6 +30,7 @@ export class BudgetService {
     private backendReport: string = this.backendAPI + '/report';
     private backendProject: string = this.backendAPI + '/project';
     private backendWorkgroup: string = this.backendAPI + '/workgroup';
+    private backendSearch: string = this.backendAPI + '/search';
 
     constructor(
         private httpClient: HttpClient
@@ -128,6 +129,11 @@ export class BudgetService {
     /** Workgroup */
     getWorkgroup(){
         return this.httpClient.get<IWorkgroup[]>(this.backendWorkgroup)
+    }
+
+    /** Search */
+    postSearch(value: any){
+        return this.httpClient.post(this.backendSearch, value)
     }
 }
 

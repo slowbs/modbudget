@@ -62,7 +62,7 @@ export class ActivityComponent implements OnInit {
 
   onInsertSubmit() {
     // this.modelInsert.budgetno = this.Budgetno
-    // console.log(this.model)
+    // console.log(this.modelInsert)
     this.budgetService
       .postActivity(this.modelInsert)
       .subscribe(result => {

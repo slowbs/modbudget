@@ -6,7 +6,8 @@ export const AppURL = {
     FormActivity: 'formactivity',
     Activity: 'activity',
     Report: 'report',
-    Project: 'project'
+    Project: 'project',
+    Search: 'search'
 }
 
 export const backendURL: string = '/backend';

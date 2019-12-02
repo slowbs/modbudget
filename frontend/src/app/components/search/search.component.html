@@ -1,0 +1,61 @@
+<app-auth-content>
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> แดชบอร์ด</h1>
+            <p>รหัสงบประมาณ</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/', AppURL.Index]">แดชบอร์ด</a></li>
+        </ul>
+    </div>
+    <div class="tile">
+        <div class="row" id="sandbox-container">
+            <div class="col-md-12">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="budgetno">ค้นหาจากโครงการ</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="name">ค้นหาจากผู้รับผิดชอบ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form (submit)="onSearchProject()">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <input class="form-control" id="project" [(ngModel)]="modelproject.project"
+                                        name="project" type="text">
+                                </div>
+                                <div class="col-lg-2">
+                                    <button type="submit" class="btn btn-primary mb-2">ค้นหา</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <form (submit)="onSearchPerson()">
+                            <div class="row">
+                                <div class="col-lg-10">
+                                    <input class="form-control" id="perosn" [(ngModel)]="modelperson.person"
+                                        name="person" type="text">
+                                </div>
+                                <div class="col-lg-2">
+                                    <button type="submit" class="btn btn-primary mb-2">ค้นหา</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</app-auth-content>

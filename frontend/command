@@ -668,3 +668,8 @@ left join
  GROUP by projectno, activityno ) as sumoutcome2
 on sumoutcome2.projectno = p.projectno and sumoutcome2.activityno = p.activityno
 GROUP by p.projectno, p.activityno
+
+//search like 
+SELECT * FROM `project` WHERE person like '%%?%%'
+SELECT * FROM `project` WHERE name like '%%?%%'
+

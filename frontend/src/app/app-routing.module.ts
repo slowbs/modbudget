@@ -9,6 +9,7 @@ import { FormactivityComponent } from './components/formactivity/formactivity.co
 import { ActivityComponent } from './components/activity/activity.component';
 import { ReportComponent } from './components/report/report.component';
 import { ProjectComponent } from './components/project/project.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,9 @@ const routes: Routes = [
   { path: AppURL.Report, component: ReportComponent },
   { path: AppURL.Project, component: ProjectComponent },
   { path: AppURL.Project + '/:budgetno' + '/:activityno', component: ProjectComponent},
+  { path: AppURL.Search, component: SearchComponent },
   { path: '**', redirectTo: AppURL.Index, pathMatch: 'full' }
+  
 ];
 
 @NgModule({
