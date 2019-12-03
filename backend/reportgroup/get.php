@@ -14,13 +14,13 @@ if (isset($_GET['id'])) {
 
     /** ดึง header */
     // $query = 'select * from workgroup where id = ?';
-    $query = 'select id, w.name, income, outcome, refund, sum(income - outcome + refund) as balance from (
-        (select *  from workgroup) as w
+    $query = 'select w.id, w.name, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund, sum(income - outcome + refund) as balance from (
+        (select * from workgroup) as w
         left JOIN
         (select workgroup, projectno from project) as pj on pj.workgroup = w.name
-        left JOIN
-        (select projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund from list) as l on l.projectno = pj.projectno)
-        where w.id = ? group by w.name order by id';
+        left join 
+        (select projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund from list GROUP by projectno) as l on l.projectno = pj.projectno)
+        where w.id = ? group by w.name order by w.id';
     $stmt = mysqli_prepare($database, $query);
     mysqli_stmt_bind_param(
         $stmt,

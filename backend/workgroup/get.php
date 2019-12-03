@@ -1,7 +1,7 @@
 <?php
 
 // $sql = 'SELECT * from workgroup';
-$sql = 'select w.id, w.name, sum(income) as income, sum(outcome) as outcome, sum(refund), sum(income - outcome + refund) as balance from (
+$sql = 'select w.id, w.name, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund, sum(income - outcome + refund) as balance from (
     (select * from workgroup) as w
     left JOIN
     (select workgroup, projectno from project) as pj on pj.workgroup = w.name
