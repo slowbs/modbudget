@@ -31,6 +31,7 @@ export class BudgetService {
     private backendProject: string = this.backendAPI + '/project';
     private backendWorkgroup: string = this.backendAPI + '/workgroup';
     private backendSearch: string = this.backendAPI + '/search';
+    private backendReportgroup: string = this.backendAPI + '/reportgroup';
 
     constructor(
         private httpClient: HttpClient
@@ -124,6 +125,11 @@ export class BudgetService {
     /** Report */
     getReport() {
         return this.httpClient.get<IReport[]>(this.backendReport);
+    }
+
+    /** Report Group */
+    getReportGreoup (id: any) {
+        return this.httpClient.get<IProject[]>(this.backendReportgroup, { params : { id }});
     }
 
     /** Workgroup */

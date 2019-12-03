@@ -26,6 +26,9 @@ $routes['/api/project']['DELETE'] = 'project/delete.php';
 /** Report */
 $routes['/api/report']['GET'] = 'report/get.php';
 
+/** ReportGroup */
+$routes['/api/reportgroup']['GET'] = 'reportgroup/get.php';
+
 /** Workgroup */
 $routes['/api/workgroup']['GET'] = 'workgroup/get.php';
 
