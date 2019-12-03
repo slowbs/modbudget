@@ -3,7 +3,7 @@ if (isset($_GET['id'])) {
     $query = '(select pj.projectno, w.id, pj.name, workgroup, income, outcome, refund, sum(income - outcome + refund) as balance from (
         (select  projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund  from list GROUP by projectno) as l
         right JOIN
-        (select * from project) as pj on pj.projectno = l.projectno
+        (select * from project group by projectno) as pj on pj.projectno = l.projectno
         left JOIN
         (select * from workgroup) as w on w.name = pj.workgroup)
         where w.id = ? GROUP by l.projectno order by pj.created)
@@ -12,7 +12,7 @@ select "","","total","",sum(income), sum(outcome), sum(refund), sum(income - out
 (select pj.projectno, w.id, pj.name, workgroup, income, outcome, refund, sum(income - outcome + refund) as balance from (
         (select  projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund  from list GROUP by projectno) as l
         right JOIN
-        (select * from project) as pj on pj.projectno = l.projectno
+        (select * from project group by projectno) as pj on pj.projectno = l.projectno
         left JOIN
         (select * from workgroup) as w on w.name = pj.workgroup)
         where w.id = ? GROUP by l.projectno order by pj.created) as total';
@@ -31,7 +31,7 @@ select "","","total","",sum(income), sum(outcome), sum(refund), sum(income - out
     $query = 'select w.id, w.name, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund, sum(income - outcome + refund) as balance from (
         (select * from workgroup) as w
         left JOIN
-        (select workgroup, projectno from project) as pj on pj.workgroup = w.name
+        (select workgroup, projectno from project group by projectno) as pj on pj.workgroup = w.name
         left join 
         (select projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund from list GROUP by projectno) as l on l.projectno = pj.projectno)
         where w.id = ? group by w.name order by w.id';
