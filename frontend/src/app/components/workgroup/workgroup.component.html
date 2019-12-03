@@ -1,1 +1,52 @@
-<p>workgroup works!</p>
+<app-auth-content>
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> รายงาน</h1>
+            <p>แบ่งตามกลุ่มงาน</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/', AppURL.Index]">แดชบอร์ด</a></li>
+        </ul>
+    </div>
+    <div class="tile">
+        <div class="col-sm-12">
+            <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+        </div>
+        <br>
+        <div class="table-responsive" #TABLE #table>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ชื่องบ</th>
+                        <th>จัดสรร</th>
+                        <th>เบิกจ่าย</th>
+                        <th>คืนเงิน</th>
+                        <th>คงเหลือ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of Listworkgroup">
+                        <td>{{ item.id }}</td>
+                        <!-- <td>{{ i + 1 }}</td> -->
+                        <!-- <td><a [routerLink]="['/', AppURL.List, item.id ] ">{{ item.name }}</a></td> -->
+                        <td><a [routerLink]="['/', AppURL.Reportgroup, item.id ] ">{{ item.name }}</a></td>
+                        <td>
+                            <font color="green"><b>{{ item.income }}</b></font>
+                        </td>
+                        <td>
+                            <font color="red"><b>{{ item.outcome }}</b></font>
+                        </td>
+                        <td>
+                            <font color="blue"><b>{{ item.refund }}</b></font>
+                        </td>
+                        <td><b>{{ item.balance }}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</app-auth-content>

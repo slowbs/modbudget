@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: AppURL.Project + '/:budgetno' + '/:activityno', component: ProjectComponent},
   { path: AppURL.Search, component: SearchComponent },
   { path: AppURL.Reportgroup, component: ReportgroupComponent },
-  { path: AppURL.Reportgroup + '/:workgroup', component: ReportgroupComponent},
+  { path: AppURL.Reportgroup + '/:id', component: ReportgroupComponent},
   { path: AppURL.Workgroup, component: WorkgroupComponent },
   { path: '**', redirectTo: AppURL.Index, pathMatch: 'full' }
   
