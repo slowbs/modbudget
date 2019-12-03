@@ -11,7 +11,7 @@ declare const $: any;
 })
 export class ActivityComponent implements OnInit {
 
-  private Header:[]
+  public Header:[]
 
   public modelInsert: IActivity = {
     budgetno: '',

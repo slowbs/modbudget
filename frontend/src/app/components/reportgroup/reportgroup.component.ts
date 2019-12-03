@@ -22,7 +22,7 @@ export class ReportgroupComponent implements OnInit {
 
   AppURL = AppURL;
 
-  private Header: [];
+  public Header: [];
   private WorkgroupID: IWorkgroup = Object.assign({});
   public ProjectItem: IProject[] = [];
 

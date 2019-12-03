@@ -11,7 +11,7 @@ declare const $: any;
 })
 export class ListComponent implements OnInit {
 
-    private header: [];
+    public header: [];
 
     public modelInsert: IList = {
         bookno: '',

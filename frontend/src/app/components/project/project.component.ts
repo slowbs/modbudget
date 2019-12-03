@@ -11,7 +11,7 @@ declare const $: any;
 })
 export class ProjectComponent implements OnInit {
 
-    private Header: []
+    public Header: []
 
     public modelInsert: IProject = {
         budgetno: '',
