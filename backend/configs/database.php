@@ -25,6 +25,7 @@ if (PRODUCTION) {
     $route  = explode('?', str_replace('/backend', '', $_SERVER['REQUEST_URI']))[0];
 }
 
+// print_r($route);
 
 $database = mysqli_connect($host, $user, $password, $dbname);
 mysqli_set_charset($database, "utf8");

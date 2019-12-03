@@ -57,7 +57,7 @@ if (isset($_GET['budgetno']) && isset($_GET['activityno']) && isset($_GET['proje
         'sss',
         $_GET['budgetno'],
         $_GET['activityno'],
-        $_GET['projectno'],
+        $_GET['projectno']
     );
     mysqli_stmt_execute($stmt);
     $result2 = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
