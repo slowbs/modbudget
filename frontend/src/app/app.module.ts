@@ -21,6 +21,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SearchComponent } from './components/search/search.component';
 import { ReportgroupComponent } from './components/reportgroup/reportgroup.component';
 import { WorkgroupComponent } from './components/workgroup/workgroup.component';
+import { ReportactivityComponent } from './components/reportactivity/reportactivity.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { WorkgroupComponent } from './components/workgroup/workgroup.component';
     ProjectComponent,
     SearchComponent,
     ReportgroupComponent,
-    WorkgroupComponent
+    WorkgroupComponent,
+    ReportactivityComponent
   ],
   imports: [
     BrowserModule,

@@ -423,12 +423,12 @@ GROUP by a.activityno
 
 
 //Activity
-select id, a.activityno, name, income, outcome, sum(income - outcome) as balance from (
-(select *  from activity) as a
-left join
-(select activityno, sum(income) as income, sum(outcome) as outcome from list GROUP by activityno) as l on l.activityno = a.activityno)
-where budgetno = ?
-group by activityno
+select id, a.budgetno, a.activityno, name, income, outcome, refund, sum(income - outcome + refund) as balance from (
+        (select *  from activity) as a
+        left join
+        (select activityno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund from list GROUP by activityno) as l on l.activityno = a.activityno)
+        where budgetno = ?
+        group by activityno
 
 //Activity join 2 condition
 select id, a.activityno, name, income, outcome, sum(income - outcome) as balance from (
@@ -709,19 +709,19 @@ select pj.projectno, w.id, pj.name, workgroup, income, outcome, refund, sum(inco
         where w.id = ? GROUP by l.projectno order by pj.created
 
 //reportgrouptlist with total
-(select pj.projectno, w.id, pj.name, workgroup, income, outcome, refund, sum(income - outcome + refund) as balance from (
+select pj.projectno, w.id, pj.name, workgroup, person, income, outcome, refund, sum(income - outcome + refund) as balance from (
         (select  projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund  from list GROUP by projectno) as l
         right JOIN
-        (select * from project) as pj on pj.projectno = l.projectno
+        (select * from project group by projectno) as pj on pj.projectno = l.projectno
         left JOIN
         (select * from workgroup) as w on w.name = pj.workgroup)
         where w.id = ? GROUP by l.projectno order by pj.created)
 UNION ALL
-select "","","total","",sum(income), sum(outcome), sum(refund), sum(income - outcome - refund) as balance from
+select "","","total","", "", sum(income), sum(outcome), sum(refund), sum(income - outcome - refund) as balance from
 (select pj.projectno, w.id, pj.name, workgroup, income, outcome, refund, sum(income - outcome + refund) as balance from (
         (select  projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund  from list GROUP by projectno) as l
         right JOIN
-        (select * from project) as pj on pj.projectno = l.projectno
+        (select * from project group by projectno) as pj on pj.projectno = l.projectno
         left JOIN
         (select * from workgroup) as w on w.name = pj.workgroup)
         where w.id = ? GROUP by l.projectno order by pj.created) as total
