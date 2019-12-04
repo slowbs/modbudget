@@ -1,8 +1,8 @@
 <app-auth-content>
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-dashboard"></i> กิจกรรม</h1>
-            <p>รหัสกิจกรรม</p>
+            <h1><i class="fa fa-tags"></i> รายงาน</h1>
+            <p>แบ่งตามรหัสกิจกรรม</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -11,17 +11,11 @@
         </ul>
     </div>
     <div class="tile">
-        <div class="row" *ngFor="let item of Header">
-            <div class="col-lg-6">
-                <div class="bs-component">
-                    <h3>รหัสงบประมาณ : {{ item.budgetno }} </h3>
-                </div>
-            </div>
+        <div class="col-sm-12">
+            <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
         </div>
-        <div align="right"><a href="#insertListModal" class="edit" data-toggle="modal">
-                <button class="btn btn-success">เพิ่มรายการ</button></a></div>
         <br>
-        <div class="table-responsive">
+        <div class="table-responsive" #TABLE #table>
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>

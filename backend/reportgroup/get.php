@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
         (select * from workgroup) as w on w.name = pj.workgroup)
         where w.id = ? GROUP by l.projectno order by pj.created)
 UNION ALL
-select "","","total","", "", sum(income), sum(outcome), sum(refund), sum(income - outcome - refund) as balance from
+select "","","total","", "", sum(income), sum(outcome), sum(refund), sum(income - outcome + refund) as balance from
 (select pj.projectno, w.id, pj.name, workgroup, income, outcome, refund, sum(income - outcome + refund) as balance from (
         (select  projectno, sum(income) as income, sum(outcome) as outcome, sum(refund) as refund  from list GROUP by projectno) as l
         right JOIN
