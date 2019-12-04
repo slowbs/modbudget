@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BudgetService, IList } from '../budget.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppURL } from '../../app.url';
+import { empty } from 'rxjs';
 declare const $: any;
 
 @Component({
@@ -57,7 +58,7 @@ export class ListComponent implements OnInit {
             .subscribe(result => {
                 this.ListItem = result['result']
                 this.header = result['result2']
-                console.log(this.header)
+                // console.log(this.header)
             })
         // this.datePicker()
     }
@@ -73,6 +74,7 @@ export class ListComponent implements OnInit {
     }
 
     onInsertSubmit() {
+        this.checkEmpty()
         // console.log(this.modelInsert)
         this.budgetService
             .postList(this.modelInsert)
@@ -80,7 +82,8 @@ export class ListComponent implements OnInit {
                 $('#insertListModal').modal('hide')
                 this.ngOnInit()
                 this.onResetModel()
-            })
+            },
+                excep => alert(excep.error.message))
     }
 
     onUpdateSubmit() {
@@ -104,6 +107,7 @@ export class ListComponent implements OnInit {
         this.modelInsert.bookno = '',
             this.modelInsert.datepick = new Date(),
             this.modelInsert.text = '',
+            this.modelInsert.note = '',
             this.modelInsert.income = '',
             this.modelInsert.outcome = '',
             this.modelInsert.refund = ''
@@ -118,6 +122,18 @@ export class ListComponent implements OnInit {
                 $('#deleteListModal').modal('hide');
             },
                 excep => alert(excep.error.message))
+    }
+
+    public checkEmpty(){
+        if(!this.modelInsert.income){
+            this.modelInsert.income = '';
+        }
+        if(!this.modelInsert.refund){
+            this.modelInsert.refund = '';
+        }
+        if(!this.modelInsert.outcome){
+            this.modelInsert.outcome = '';
+        }
     }
 
     // public datePicker() {
