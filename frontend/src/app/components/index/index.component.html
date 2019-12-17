@@ -17,9 +17,9 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>หมายเลขงบ</th>
-                        <th>ชื่องบ</th>
+                        <th>#</th>
+                        <th>รหัสงบประมาณ</th>
+                        <th>ประเภทงบ</th>
                         <th>จัดสรร</th>
                         <th>เบิกจ่าย</th>
                         <th>คืนเงิน</th>
@@ -76,14 +76,14 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="col-form-label" for="budgetno">หมายเลขงบ</label>
+                                            <label class="col-form-label" for="budgetno">รหัสงบประมาณ</label>
                                             <input class="form-control" id="budgetno" [(ngModel)]="modelInsert.budgetno"
                                                 name="budgetno" type="text">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="col-form-label" for="name">ชื่อ</label>
+                                            <label class="col-form-label" for="name">ประเภทงบ</label>
                                             <input class="form-control" id="name" [(ngModel)]="modelInsert.name"
                                                 name="name" type="text">
                                         </div>
@@ -119,7 +119,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="col-form-label" for="budgetno">หมายเลขงบ</label>
+                                            <label class="col-form-label" for="budgetno">รหัสงบประมาณ</label>
                                             <input class="form-control" id="budgetno" [(ngModel)]="model.budgetno"
                                                 name="budgetno" type="text">
                                         </div>
@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="col-form-label" for="name">ชื่อ</label>
+                                            <label class="col-form-label" for="name">ประเภทงบ</label>
                                             <input class="form-control" id="name" [(ngModel)]="model.name" name="name"
                                                 type="text">
                                         </div>

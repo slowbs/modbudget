@@ -16,8 +16,8 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { ReportComponent } from './components/report/report.component';
 import { ProjectComponent } from './components/project/project.component';
 
-import {CalendarModule} from 'primeng/calendar';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './components/search/search.component';
 import { ReportgroupComponent } from './components/reportgroup/reportgroup.component';
 import { WorkgroupComponent } from './components/workgroup/workgroup.component';
@@ -48,7 +48,6 @@ import { ReportactivityComponent } from './components/reportactivity/reportactiv
     FormsModule,
     CalendarModule,
     BrowserAnimationsModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
