@@ -61,15 +61,15 @@
                         <td>{{ item.datepick }}</td>
                         <td>{{ item.text }}</td>
                         <td>
-                            <font color="green"><b>{{ item.income }}</b></font>
+                            <font color="green"><b>{{ item.income | number : '.2-2' }}</b></font>
                         </td>
                         <td>
-                            <font color="red"><b>{{ item.outcome }}</b></font>
+                            <font color="red"><b>{{ item.outcome | number : '.2-2' }}</b></font>
                         </td>
                         <td>
-                            <font color="blue"><b>{{ item.refund }}</b></font>
+                            <font color="blue"><b>{{ item.refund | number : '.2-2' }}</b></font>
                         </td>
-                        <td><b>{{ item.balance }}</b></td>
+                        <td><b>{{ item.balance | number : '.2-2' }}</b></td>
                         <td>{{ item.note }}</td>
                         <td>
                             <!-- <a class="btn btn-primary btn-sm" href="#"><i class="fa fa-lg fa-trash"></i></a> -->
