@@ -4,9 +4,9 @@
 
 /** Production */
 if (PRODUCTION) {
-    $host = '61.19.202.217';
-    $user = 'hdc';
-    $password = 'hdcnst';
+    $host = '61.19.000.000';
+    $user = 'user';
+    $password = 'password';
     $dbname = 'modbudget';
     $route  = explode('?', str_replace('/modbudget/backend', '', $_SERVER['REQUEST_URI']))[0];
 } elseif (TESTLAN) {
